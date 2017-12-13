@@ -1,0 +1,54 @@
+<div class="cms">
+<!-- Button trigger modal -->
+<button type="button" id="loginForm" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalLoginAvatar" [hidden]=true>
+  Launch demo modal
+</button>
+
+<!--Modal: Login Form-->
+<div class="modal fade" id="modalLoginAvatar" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+      <!--Content-->
+      <div class="modal-content">
+
+          <!--Header-->
+          <div class="modal-header light-blue darken-3 white-text">
+              <h4 class="title"><i class="fa fa-user"></i>Zaloguj się</h4>
+              <button id="loginClose" type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <!--Body-->
+          <form [formGroup]="login" (ngSubmit)="loginUser(login.value)">
+          <div class="modal-body">
+              <div class="md-form form-sm">
+                  <i class="fa fa-envelope prefix"></i>
+                  <input type="text" id="form30" class="form-control" placeholder="Nazwa uytkownika" formControlName="user">
+              </div>
+
+              <div class="md-form form-sm">
+                  <i class="fa fa-lock prefix"></i>
+                  <input type="password" id="form31" class="form-control" placeholder="Hasło" formControlName="psw">
+              </div>
+
+              <div class="text-center mt-2">
+                  <button class="btn btn-info">Zaloguj<i class="fa fa-sign-in ml-1"></i></button>
+              </div>
+
+          </div>
+
+          <div class="alert alert-danger" *ngIf="errorLogin.length > 0">
+            <strong>Błąd!</strong> {{errorLogin}}.
+          </div>
+        </form>
+          <!--Footer-->
+          <div class="modal-footer">
+              <div class="options text-center text-md-right mt-1">
+                  <p>Zapomniałeś <a href="#">hasła?</a></p>
+              </div>
+          </div>
+      </div>
+      <!--/.Content-->
+  </div>
+</div>
+<!--Modal: Login Form-->
+</div>

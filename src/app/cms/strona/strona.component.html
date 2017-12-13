@@ -1,0 +1,176 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="row card card-cascade narrower">
+                <div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+                    <a class="white-text mx-3" href="">Strony</a>
+                                           
+                    <div>
+                        <button class="btn btn-outline-white btn-rounded btn-sm px-2" type="button"  (click)="strona.show(); pobierzStrony()" mdbTooltip="Nowa strona" placement="left" mdbRippleRadius><i class="fa fa-file-text-o" aria-hidden="true"></i></button>
+                    </div>
+                    <div>
+                        <button class="btn btn-outline-white btn-rounded btn-sm px-2" type="button"  (click)="kontainer.show()" mdbTooltip="Nowy kontener" placement="left" mdbRippleRadius><i class="fa fa-th" aria-hidden="true"></i></button>
+                    </div>
+                    
+                </div>
+                <app-pages (click)="ngOnChanges()" #menuStron></app-pages>
+            </div>
+        </div>
+       <div class="col-lg-8">
+           <div class="row card card-cascade narrower cards2">
+                <div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+                        <div>
+                            <p>{{namePages}}</p>
+                        </div>
+                </div>
+                <div class="md-form">
+                        <br>
+                        <input mdbActive type="text" id="form1" class="form-control" [(ngModel)]="nowaNazwa">
+                        <label for="form1" class="">Nazwa strony</label>
+                </div>
+                <button class="btn btn-outline-success waves-effect" (click)="zmienNazwe()">Zapisz</button>
+
+           </div>
+            <div class="row card card-cascade narrower" *ngFor="let kontener of kontenery">
+                <div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+                    <div>
+                        <p>{{kontener.page_container_desc}} - {{kontener.page_container_id}}</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-outline-white btn-rounded btn-sm px-2" type="button" (click)="style.show(); idKonteneraAdd(kontener.page_container_id)" mdbRippleRadius mdbTooltip="Dodaj nowy element" placement="left" ><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        <button class="btn btn-outline-white btn-rounded btn-sm px-2" type="button" (click)="delete.show(); deleteKontener(kontener.page_container_id)" mdbTooltip="Usuń kontener" placement="left" ><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                    <app-kontener [idKontener]="kontener.page_container_id" [idPage]="idStrony" #kontainer></app-kontener>
+                    <br>
+            </div>
+       </div>
+    </div>
+</div>
+
+<div mdbModal #style="mdb-modal" class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="heading lead">Nowy element</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="style.hide()">
+                    <span aria-hidden="true" class="white-text">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <mdb-select [options]="modelElemen" placeholder="Wybierz moduł" (selected)=wybranyModul($event) class="select"></mdb-select>
+                            <label>Moduł</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="col-md-12">
+                                <mdb-select [options]="widokElement" placeholder="Wybierz widok" #widok class="select" (selected)="wybranyWidok($event)"></mdb-select>
+                                <label>Widok</label>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="col-md-12">
+                                <mdb-select [options]="trescElement" placeholder="Wybierz treść" class="select" (selected)="wybranaTresc($event)"></mdb-select>
+                                <label>Element</label>
+                            </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-primary-modal waves-light" mdbRippleRadius (click)="dodajElement()">Dodaj</a>
+                <a type="button" class="btn btn-outline-secondary-modal" data-dismiss="modal" (click)="style.hide()" mdbRippleRadius>Anuluj</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div mdbModal #delete="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-danger" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="heading lead">Usuń</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="delete.hide()">
+                    <span aria-hidden="true" class="white-text">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+                    <p>Czy na pewno usuną kontener?</p>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-primary-modal waves-light" (click)="usunKontener();delete.hide()" mdbRippleRadius >Tak</a>
+                <a type="button" class="btn btn-outline-secondary-modal" data-dismiss="modal" (click)="delete.hide()" mdbRippleRadius>Nie</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div mdbModal #kontainer="mdb-modal" class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="heading lead">Nowy kontener</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="kontainer.hide()">
+                    <span aria-hidden="true" class="white-text">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label>Nazwa kontenera</label>
+                            <input type="text" class="text-form" [(ngModel)]="nameKOntener">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-primary-modal waves-light" mdbRippleRadius (click)="dodajKontener()">Dodaj</a>
+                <a type="button" class="btn btn-outline-secondary-modal" data-dismiss="modal" (click)="kontainer.hide()" mdbRippleRadius>Anuluj</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div mdbModal #strona="mdb-modal" class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="heading lead">Nowa strona</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="kontainer.hide()">
+                    <span aria-hidden="true" class="white-text">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label>Nazwa:</label>
+                            <input type="text" class="text-form" [(ngModel)]="namePages">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <mdb-select [options]="pages" placeholder="-- wybierz strone --" (selected)="wybranaStrona($event)"></mdb-select>
+                            <label>Umieść poniżej:</label>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-primary-modal waves-light" mdbRippleRadius (click)="dodajStrone()">Dodaj</a>
+                <a type="button" class="btn btn-outline-secondary-modal" data-dismiss="modal" (click)="strona.hide()" mdbRippleRadius>Anuluj</a>
+            </div>
+        </div>
+    </div>
+</div>

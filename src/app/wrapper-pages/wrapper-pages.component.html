@@ -1,0 +1,3 @@
+<div class="row" *ngFor="let komp of kontrolkiDoWyswietlenia;">   
+    <app-dynamic-component [componentData]="komp" [idTresci]="komp.idTresci" [pageElement]="komp.pageElement"></app-dynamic-component>
+</div>

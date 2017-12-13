@@ -1,0 +1,6 @@
+ul.menuPages{
+    list-style-type: none;
+    &:active{
+        border: none;
+    }
+}

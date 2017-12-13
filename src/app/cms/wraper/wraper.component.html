@@ -1,0 +1,39 @@
+<div class="container">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let komp of kontrolkiDoWyswietlenia;">
+        <div class="row">
+            <div class="col-lg-10">
+                <app-dynamic-component [componentData]="komp" [idTresci]="komp.idTresci" [pageElement]="komp.pageElement" #dynamic></app-dynamic-component>
+            </div>
+            <div class="col-lg-2">
+                <i class="fa fa-trash-o" aria-hidden="true" (click)="style.show(); delete(komp.pageElement)" style="cursor:pointer; color:red" mdbRippleRadius mdbTooltip="Usuń" placement="bottom" mdbRippleRadius></i>
+                <i class="fa fa-caret-up" aria-hidden="true" (click)="upElement(komp)" style="cursor:pointer" mdbTooltip="Przenieś do góry " placement="bottom" mdbRippleRadius></i>
+                <i class="fa fa-caret-down" aria-hidden="true" (click)="downlElement(komp)" style="cursor:pointer" mdbTooltip="Przenieś do dołu" placement="bottom" mdbRippleRadius></i>
+            </div>
+        </div>
+    </li>
+  </ul>
+</div>
+
+<div mdbModal #style="mdb-modal" class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-danger" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="heading lead">Usuń</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="style.hide()">
+                    <span aria-hidden="true" class="white-text">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+                    <p>Czy na pewno usuną element?</p>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-primary-modal waves-light" (click)="usun()" mdbRippleRadius >Tak</a>
+                <a type="button" class="btn btn-outline-secondary-modal" data-dismiss="modal" id="close" (click)="style.hide()" mdbRippleRadius>Nie</a>
+            </div>
+        </div>
+    </div>
+</div>

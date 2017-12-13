@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background-color: #eeeeee;
+}
+
+.row{
+    margin-bottom: 20px;
+}
+
+.butony{
+    width:150px;
+    height:40px;
+    cursor: pointer;
+}
+
+.my-drop-zone { 
+    border: dotted 3px lightgray; 
+    padding: 15px 15px 15px 15px; 
+    width: 100%;
+    text-align: center;
+}
+.nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+.another-file-over-class { border: dotted 3px green; }
+
+.home{
+    background-color: #ffffff;
+}
+
+.thead-inverseW{
+   // background:  linear-gradient(#31404e, rgba(30, 39, 47, 0.98));
+   background-color: #ffffff;
+    color: #111111;
+}
+
+.cards2{
+    padding: 0px 20px;
+}
+
+#klepsydra{
+    background-color: #111111;
+    position: absolute;
+    opacity: 0.9;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 30%;
+    text-align: center;
+    display: none;
+    z-index: 10000;
+}

@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row card card-cascade narrower cards2">
+        <div _ngcontent-c4="" class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+                    
+            <a _ngcontent-c4="" class="white-text mx-3" href="">Nowy użytkownik</a>
+                                            
+        </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <label>Login:</label>
+            <input type="text" class="form-control" [(ngModel)]="login">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <label>Hasło:</label>
+            <input type="password" class="form-control" [(ngModel)]="haslo">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <label>Nazwisko i imię:</label>
+            <input type="text" class="form-control" [(ngModel)]="nazwiskoImie">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <label>Email:</label>
+            <input type="email" class="form-control" [(ngModel)]="email">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <label>Status:</label>
+            <select class="form-control" [(ngModel)]="status" style="visibility: visible; display: block !important;">
+                <option value="1">aktywny</option>
+                <option value="2">zablokowany</option>
+                <option value="3">usunięty</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <button class="btn btn-outline-primary waves-effect" (click)="powrot()">Powrót</button>
+            <button class="btn btn-outline-success waves-effect" (click)="zapisz()">Zapisz</button>
+        </div>
+    </div> 
+    </div>
+</div>
+
