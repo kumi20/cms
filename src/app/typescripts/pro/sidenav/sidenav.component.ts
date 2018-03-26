@@ -44,8 +44,8 @@ export class SidenavComponent implements AfterViewInit {
         this.renderer.setElementStyle(this.sideNav.nativeElement, 'transform',  'translateX(-100%)');
         this.setShown(false);
       } else {
-        this.renderer.setElementStyle(this.sideNav.nativeElement, 'transform',  'translateX(-100%)');
-        this.setShown(true);
+        this.renderer.setElementStyle(this.sideNav.nativeElement, 'transform',  'translateX(0%)');
+        this.setShown(false);
       }
     } else {
       this.renderer.setElementClass(document.body, 'hidden-sn', true);
@@ -63,7 +63,7 @@ export class SidenavComponent implements AfterViewInit {
         this.setShown(false);
       } else {
         this.renderer.setElementStyle(this.sideNav.nativeElement, 'transform',  'translateX(-100%)');
-        this.setShown(true);
+        this.setShown(false);
       }
 
       if (this.windwosWidth > 1440 && this.shown) {
@@ -85,15 +85,15 @@ export class SidenavComponent implements AfterViewInit {
     if (this.fixed) {
       if (this.windwosWidth < 1441) {
         this.renderer.setElementStyle(this.sideNav.nativeElement, 'transform',  'translateX(0%)');
-        this.setShown(true);
+        this.setShown(false);
         this.showOverlay();
       } else {
         this.renderer.setElementStyle(this.sideNav.nativeElement, 'transform',  'translateX(0%)');
-        this.setShown(true);
+        this.setShown(false);
       }
     } else {
       this.renderer.setElementStyle(this.sideNav.nativeElement, 'transform',  'translateX(0%)');
-      this.setShown(true);
+      this.setShown(false);
       this.showOverlay();
     }
 
@@ -106,7 +106,7 @@ export class SidenavComponent implements AfterViewInit {
         this.setShown(false);
         this.hideOverlay();
       } else {
-        this.renderer.setElementStyle(this.sideNav.nativeElement, 'transform',  'translateX(-100%)');
+        this.renderer.setElementStyle(this.sideNav.nativeElement, 'transform',  'translateX(0%)');
         this.setShown(false);
       }
     } else {
@@ -127,7 +127,7 @@ export class SidenavComponent implements AfterViewInit {
   showOverlay() {
     this.renderer.setElementStyle(this.overlay.nativeElement, 'display', 'block');
     setTimeout(() => {
-      this.renderer.setElementStyle(this.overlay.nativeElement, 'opacity', '1');
+      this.renderer.setElementStyle(this.overlay.nativeElement, 'opacity', '0');
     }, 0);
   }
 
