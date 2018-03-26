@@ -1,0 +1,91 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="row card card-cascade narrower">
+      <div _ngcontent-c4="" class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+      
+        <a _ngcontent-c4="" class="white-text mx-3" href="">Galerie</a>
+      
+      </div>
+
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                  <label for="nameGallery" class="">Nazwa galerii</label>
+                  <input mdbActive type="text" id="nameGallery" class="form-control" [(ngModel)]="nameGalery">      
+            </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-lg-12">
+               <label for="descriptioGallery" class="">Opis galerii</label>
+                <input mdbActive type="text" id="descriptionGallery" class="form-control" [(ngModel)]="descriptionGalery">     
+          </div>
+      </div>
+      </div>
+      
+
+      <div class="row">
+        <div class="container">
+               <mdb-image-modal [modalImages]="imagesBasic" type="margin"></mdb-image-modal>
+        </div>        
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+            <label class="my-drop-zone little" for="uploader-input" ng2FileDrop [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}" (fileOver)="fileOverAnother($event)" [uploader]="uploader">
+                Przeciągnij i upuść plik na to pole<br/>
+                lub kliknij w nie, żeby wybrać pliki z dysku
+            </label>
+            <input type="file" ng2FileSelect [uploader]="uploader" id="uploader-input" style="display:none" multiple/>
+        </div>
+        <div class="container">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th width="20%">Nazwa</th>
+                    <th width="20%">Opis</th>
+                    <th>Rozmiar</th>
+                    <th>Progress</th>
+                    <th>Akcja</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of uploader.queue">
+                    <td><strong>{{ item?.file?.name }}</strong></td>
+                    <td><input type="text" class="form-control" [(ngModel)]="item.file.description"></td>
+                    <td  nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                    <td >
+                        <div class="progress" style="margin-bottom: 0;">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                        </div>
+                    </td>
+                    <td nowrap>
+                        <button type="button" class="btn btn-danger btn-xs"
+                                (click)="item.remove()">
+                            <span class="glyphicon glyphicon-trash"></span> Usuń
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div>
+                <div>
+                    <div class="progress" style="">
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="col-lg-12">
+              <button class="btn btn-outline-primary waves-effect" (click)="powrot()">Powrót</button>
+              <button class="btn btn-outline-success waves-effect" (click)="upload()" [disabled]="!uploader.getNotUploadedItems().length">Zapisz</button>
+          </div>
+      </div> 
+  </div>
+</div>

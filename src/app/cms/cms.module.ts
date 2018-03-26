@@ -42,6 +42,7 @@ import { MenuComponent } from './menu/menu.component';
 import { MenuDetalisComponent } from './menu-detalis/menu-detalis.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { AddGalleryComponent } from './add-gallery/add-gallery.component';
+import { KpirComponent } from './kpir/kpir.component';
 
 @NgModule({
   imports: [
@@ -81,7 +82,8 @@ import { AddGalleryComponent } from './add-gallery/add-gallery.component';
     MenuComponent,
     MenuDetalisComponent,
     GalleryComponent,
-    AddGalleryComponent
+    AddGalleryComponent,
+    KpirComponent
   ],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]
