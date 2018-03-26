@@ -1,11 +1,13 @@
 <div class="ng-gallery mdb-lightbox {{ type }}" *ngIf="showRepeat"> 
   <figure class="col-md-4" *ngFor ="let i of modalImages; let index = index">
     <img src="{{ !i.thumb ? i.img : i.thumb }}" class="ng-thumb" (click)="openGallery(index)" alt="Image {{ index + 1 }}" />
+    <i class="fa fa-trash-o" (click)="delete(i.idPhoto)"></i>
   </figure>
 </div>
 <div  tabindex="0" class="ng-overlay" [class.hide_lightbox]="opened == false">
   <div class="top-bar">
-    <span class="info-text">{{ currentImageIndex + 1 }}/{{ modalImages.length }}</span>    
+    <span class="info-text">{{ currentImageIndex + 1 }}/{{ modalImages.length }}</span>   
+    
     <a class="close-popup" (click)="closeGallery()"></a>
     <a class="zoom-toogle" [class.zoom]='zoom' (click)="toggleZoomed()" *ngIf="!isMobile"></a>
   </div>

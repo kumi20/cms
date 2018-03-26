@@ -1,6 +1,7 @@
 import {Component, Input, Output, ElementRef, EventEmitter, OnInit, HostListener, trigger, state, style, transition, animate,
     keyframes, HostBinding } from '@angular/core';
 import { zoomState, restartState } from '../../pro/animations/animations.component';
+import { CmsService } from '../../../cms.service';
 
 declare var screenfull: any;
 
@@ -39,7 +40,7 @@ export class ImageModalComponent implements OnInit {
   @Input('type') public type: String;
 
   @Output('cancelEvent') cancelEvent = new EventEmitter<any>();
-  constructor(public element: ElementRef) {
+  constructor(public element: ElementRef, private CmsService: CmsService) {
   this._element = this.element.nativeElement;
   try {
     document.createEvent('TouchEvent');
@@ -187,5 +188,13 @@ export class ImageModalComponent implements OnInit {
     }
 
   }
+    
+    delete(indexImg:any){
+        this.CmsService.get(`gallery/deleteImg.php?idImg=${indexImg}`).subscribe(
+            response =>{
+                location.reload();
+            }
+        )
+    }
 
 }
