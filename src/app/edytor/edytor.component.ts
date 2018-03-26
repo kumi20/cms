@@ -2,7 +2,7 @@ import { Component, OnInit, Injector, Input, ViewChild, forwardRef, OnDestroy } 
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CKEditorModule } from 'ng2-ckeditor';
-import { CKEditorComponent } from 'ng2-ckeditor/lib/ckeditor.component';
+import { CKEditorComponent } from 'ng2-ckeditor';
 
 const noop = () => {
 };

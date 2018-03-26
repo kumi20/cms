@@ -47,7 +47,7 @@ export class StronaComponent implements OnInit, OnChanges{
     if (this.namePages == null) this.namePages = 'home';
     if( isNaN(this.idStrony)) this.idStrony = 1;
     this.stronaModel.page_id = this.idStrony;
-      this.CmsService.getPages().subscribe(
+      this.CmsService.get('page/getPages.php').subscribe(
           response => {
             let pom = new Array;
             response.forEach(element => {
@@ -58,7 +58,7 @@ export class StronaComponent implements OnInit, OnChanges{
           }
       )
 
-      this.CmsService.getContainer().subscribe(
+      this.CmsService.get('page/getContainer.php').subscribe(
           response => this.kontenery = response
       )
   }
@@ -68,7 +68,7 @@ export class StronaComponent implements OnInit, OnChanges{
   }
 
   idKonteneraAdd(id){
-    this.CmsService.getModulesAddPage().subscribe(
+    this.CmsService.get('page/getModule.php').subscribe(
         response => {
             let pom = new Array;
             response.forEach(element => {
@@ -84,7 +84,10 @@ export class StronaComponent implements OnInit, OnChanges{
 
   wybranyModul(event){
       this.stronaModel.module_id = event.value;
-      this.CmsService.getModelView(event.value).subscribe(
+      const json = JSON.stringify({
+        'idModel': event.value
+    })
+      this.CmsService.post('page/getModelView.php', json).subscribe(
           response => {
               let pom = new Array;
               response.forEach(element => {
@@ -97,7 +100,8 @@ export class StronaComponent implements OnInit, OnChanges{
       )
 
       switch(event.value){
-          case '24': this.CmsService.getTresc().subscribe(
+          case '24':  let uri = 'static/getTresc.php'; 
+                      this.CmsService.get(uri).subscribe(
                       response => {
                           let pom = new Array;
                           response.forEach(element => {
@@ -107,7 +111,8 @@ export class StronaComponent implements OnInit, OnChanges{
                           }
                       );
                       break;
-          case '5': this.CmsService.getGroupNews().subscribe(
+          case '5':   let grupa = 'news/newsGroup.php';   
+                      this.CmsService.get(grupa).subscribe(
                             response => {
                                 let pom = new Array;
                                 response.forEach(element => {
@@ -126,7 +131,10 @@ export class StronaComponent implements OnInit, OnChanges{
 
   usunKontener(){
       this.event.klepsydraStart();
-      this.CmsService.usunKontener(this.idKontenera).subscribe(
+      const json = JSON.stringify({
+        'id':this.idKontenera
+    })
+      this.CmsService.post('page/deleteKontener.php', json).subscribe(
           response => {
               this.ngOnInit();
               this.event.wyswietlInfo('info', 'Usunięto kontener');
@@ -139,7 +147,10 @@ export class StronaComponent implements OnInit, OnChanges{
   dodajKontener(){
       if(this.nameKOntener.length == 0) this.event.wyswietlInfo('error','Musisz podać nazwę kontenera');
       else{
-          this.CmsService.addKontainer(this.nameKOntener).subscribe(
+        const json = JSON.stringify({
+            'name':this.nameKOntener
+        })
+          this.CmsService.post('page/addKontainer.php', json).subscribe(
               response =>{
                   if(response.kod < 0) this.event.wyswietlInfo('error', response.opis);
                   else {
@@ -158,7 +169,11 @@ export class StronaComponent implements OnInit, OnChanges{
       if(this.namePages.length == 0) this.event.wyswietlInfo('error', 'Musisz podać nazwę strony');
       else if (this.numerNowejStronu == 0) this.event.wyswietlInfo('error', 'Musisz wybrać stronę nadrzędną');
       else{
-          this.CmsService.addPage(this.namePages, this.numerNowejStronu).subscribe(
+        const json = JSON.stringify({
+            'number': this.namePages,
+            'name': this.numerNowejStronu
+        })
+          this.CmsService.post('page/addPages.php', json).subscribe(
               response =>{
                 if(response.kod < 0) this.event.wyswietlInfo('error', response.opis);
                 else {
@@ -177,7 +192,7 @@ export class StronaComponent implements OnInit, OnChanges{
   }
 
   pobierzStrony(){
-    this.CmsService.getPages().subscribe(
+    this.CmsService.get('page/getPages.php').subscribe(
         response => {
           let pom = new Array;
           response.forEach(element => {
@@ -202,7 +217,10 @@ export class StronaComponent implements OnInit, OnChanges{
       if(this.stronaModel.module_id == 0 || this.stronaModel.module_view_id == 0 || this.stronaModel.page_element_elemid == 0) 
           this.event.wyswietlInfo('error', 'wybierz wszystkie dane')
       else{
-            this.CmsService.addNewElementPage(this.stronaModel).subscribe(
+        const json = JSON.stringify({
+            'elementModel': this.stronaModel
+        })
+            this.CmsService.post('page/addElementPages.php',json).subscribe(
                 response => {
                     if(response.kod < 0) this.event.wyswietlInfo('error', response.opis);
                     else {
@@ -221,7 +239,11 @@ export class StronaComponent implements OnInit, OnChanges{
       }
       else
       {
-            this.CmsService.changeNamePage(this.idStrony, this.nowaNazwa).subscribe(
+        const json = JSON.stringify({
+            'name': this.nowaNazwa,
+            'id': this.idStrony
+        })
+            this.CmsService.post('page/updateNamePages.php', json).subscribe(
             response => {
                 if(response.kod < 0) this.event.wyswietlInfo('error', response.opis);
                 else {

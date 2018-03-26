@@ -40,7 +40,11 @@ export class WrapperPagesComponent implements OnInit {
 
   pobierzKontrolki(){
         this.event.klepsydraStart();
-        this.CmsService.getContainerElement(this.idKontenera, this.idPage).subscribe(
+        const json = JSON.stringify({
+            'idContainer': this.idKontenera,
+            'idPage': this.idPage
+        })
+        this.CmsService.post('page/getContainerElement.php', json).subscribe(
             response => {
                 this.kontrolki = response;
                 this.wyswietlKontrolki();

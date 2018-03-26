@@ -25,8 +25,11 @@ export class AddUserComponent implements OnInit {
       
       if( isNaN(this.idUser)) this.idUser = 0;
       else{
+        const json = JSON.stringify({
+            'id': this.idUser
+        })
           this.event.klepsydraStart();
-          this.CmsService.getDetUser(this.idUser).subscribe(
+          this.CmsService.post('user/getDetUser.php', json).subscribe(
               response => {
                   this.login = response[0].user_login;
                   this.haslo = response[0].user_password;
@@ -41,7 +44,17 @@ export class AddUserComponent implements OnInit {
   }
 
   zapisz(){
-    this.CmsService.addUser(this.login, this.haslo, this.nazwiskoImie, this.email, this.status, this.idUser).subscribe(
+
+    const json = JSON.stringify({
+        'user_login': this.login,
+        'user_password': this.haslo,
+        'user_name':this.nazwiskoImie,
+        'user_status':this.status,
+        'user_email':this.email,
+        'user_id':this.idUser,
+    })
+
+    this.CmsService.post('user/addUser.php', json).subscribe(
         response => {
             this._route.navigateByUrl('/content-1');
             this.event.wyswietlInfo('success', 'Dodano nowego uytkownika');

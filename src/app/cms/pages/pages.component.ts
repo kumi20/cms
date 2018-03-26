@@ -19,7 +19,12 @@ export class PagesComponent implements OnInit {
 
 
   ngOnInit() {
-      this.CmsService.getPageMenu('0','0').subscribe(
+    const json = JSON.stringify({
+        'idParent': '0',
+        'idLevel': '0'
+      })
+
+      this.CmsService.post('page/getMenu.php', json).subscribe(
           response => this.menu = response
       )
   }
@@ -33,7 +38,10 @@ export class PagesComponent implements OnInit {
            this.event.wyswietlInfo('error','Nie mona usunąć strony głównej')
       }
       else{
-        this.CmsService.deletePages(this.idPageDelete).subscribe(
+        const json = JSON.stringify({
+            'id': this.idPageDelete
+        })
+        this.CmsService.post('page/deletePages.php', json).subscribe(
             response => {
               if(response.kod < 0) this.event.wyswietlInfo('error', response.opis);
               else {
@@ -48,7 +56,10 @@ export class PagesComponent implements OnInit {
   }
 
   positionDown(id){
-      this.CmsService.pageDown(id).subscribe(
+    const json = JSON.stringify({
+        'idPageElement':id
+    })
+      this.CmsService.post('page/positionPagesDown.php',json).subscribe(
           response =>{
               this.event.wyswietlInfo('info',"Przesunięto stronę w dół");
               this.ngOnInit();
@@ -57,7 +68,10 @@ export class PagesComponent implements OnInit {
   }
 
   positionUp(id){
-    this.CmsService.pageUp(id).subscribe(
+    const json = JSON.stringify({
+        'idPageElement':id
+    })  
+    this.CmsService.post('page/positionPagesUp.php',json).subscribe(
       response =>{
           this.event.wyswietlInfo('info',"Przesunięto stronę do góry");
           this.ngOnInit();
@@ -66,7 +80,10 @@ export class PagesComponent implements OnInit {
   }
 
   positionNodeDown(id){
-      this.CmsService.pageNodeDown(id).subscribe(
+    const json = JSON.stringify({
+        'idPageElement':id
+    })
+      this.CmsService.post('page/pageNodeDown.php',json).subscribe(
         response =>{
             this.event.wyswietlInfo('info',"Przesunięto stronę o poziom niżej");
             this.ngOnInit();

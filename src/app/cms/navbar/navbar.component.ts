@@ -16,7 +16,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
       this.userName = localStorage.getItem('user_nameCms');
-      this.CmsService.getMenu().subscribe(
+      let uri = 'getMenu.php';
+      this.CmsService.get(uri).subscribe(
           response => {console.log(response); this.menu = response}
       )
   }

@@ -20,7 +20,10 @@ export class NewsComponentView implements OnInit {
   ngOnInit() {
 
     this.event.klepsydraStart();
-     this.CmsService.getListNews(this.idtresci).subscribe(
+    const json = JSON.stringify({
+      'id':this.idtresci
+  })
+     this.CmsService.post('template/news/getNews.php', json).subscribe(
          response => {
            if(response != null) this.newsList = response;
             console.log('newsy', response)

@@ -23,7 +23,11 @@ export class SubPagesComponent implements OnInit {
   constructor(private CmsService: CmsService, private route: ActivatedRoute, private _route: Router, private event: EventService) { }
 
   ngOnInit() {
-    this.CmsService.getPageMenu(this.parent, this.level).subscribe(
+    const json = JSON.stringify({
+        'idParent': this.parent,
+        'idLevel': this.level
+      })
+      this.CmsService.post('page/getMenu.php', json).subscribe(
       response => this.submenu = response
     )  
   }
@@ -33,7 +37,11 @@ export class SubPagesComponent implements OnInit {
   }
 
   deletePages(){
-      this.CmsService.deletePages(this.idPageDelete).subscribe(
+    const json = JSON.stringify({
+        'idPageElement':this.idPageDelete
+    })
+
+      this.CmsService.post('page/pageNodeUp.php', json).subscribe(
           response => {
             if(response.kod < 0) this.event.wyswietlInfo('error', response.opis);
             else {
@@ -46,7 +54,10 @@ export class SubPagesComponent implements OnInit {
   }
   
   positionDown(id){
-      this.CmsService.pageDown(id).subscribe(
+    const json = JSON.stringify({
+        'idPageElement':id
+    })
+      this.CmsService.post('page/positionPagesDown.php',json).subscribe(
           response =>{
               this.event.wyswietlInfo('info',"Przesunięto stronę w dół");
               this.ngOnInit();
@@ -55,7 +66,10 @@ export class SubPagesComponent implements OnInit {
   }
   
   positionUp(id){
-    this.CmsService.pageUp(id).subscribe(
+    const json = JSON.stringify({
+        'idPageElement':id
+    })
+    this.CmsService.post('page/positionPagesUp.php',json).subscribe(
       response =>{
           this.event.wyswietlInfo('info',"Przesunięto stronę do góry");
           this.ngOnInit();
@@ -64,7 +78,10 @@ export class SubPagesComponent implements OnInit {
   }
   
   positionNodeDown(id){
-      this.CmsService.pageNodeDown(id).subscribe(
+    const json = JSON.stringify({
+        'idPageElement':id
+    })
+      this.CmsService.post('page/pageNodeDown.php',json).subscribe(
         response =>{
             this.event.wyswietlInfo('info',"Przesunięto stronę o poziom niżej");
             this.ngOnInit();
@@ -73,7 +90,11 @@ export class SubPagesComponent implements OnInit {
   }
   
   positionNodeUp(id){
-      this.CmsService.pageNodeUp(id).subscribe(
+    const json = JSON.stringify({
+        'idPageElement':id
+    })
+
+      this.CmsService.post('page/pageNodeUp.php', json).subscribe(
           response => {
               this.event.wyswietlInfo('info','Przesunięto stronę o poziom wyżej');
               this.changesMenu.emit(); 

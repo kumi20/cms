@@ -19,7 +19,10 @@ export class TrescComponent implements OnInit {
   ngOnInit() {
       this.event.klepsydraStart();
       this.route.params.subscribe(params => this.page = parseInt(params['id']));
-      this.CmsService.getTresc().subscribe(
+
+      let uri = 'static/getTresc.php';
+
+      this.CmsService.get(uri).subscribe(
           response => {
               this.listaTresci = response;
               this.event.klepsydraStop();
@@ -33,9 +36,15 @@ export class TrescComponent implements OnInit {
   }
 
   deleteTresc(){
-      this.CmsService.deleteTresc(this.idTresci).subscribe(
+      let uri = 'static/deletetresc.php';
+      const json = JSON.stringify({
+        'id': this.idTresci
+      })  
+
+      this.CmsService.post(uri,json).subscribe(
           response => {
-                this.CmsService.getTresc().subscribe(
+            let uri = 'static/getTresc.php';  
+                this.CmsService.get(uri).subscribe(
                     response => {
                         this.listaTresci = response;
                         this.event.wyswietlInfo('info', 'Usunięto treść')

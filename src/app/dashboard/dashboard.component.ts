@@ -19,9 +19,9 @@ export class DashboardComponent implements OnInit {
       console.log(this.idStrony)
   }
 
-    test(){
-        this.CmsService.test().subscribe(
-            response => console.log(response)
-        )
-    }
+  test(){
+    this.CmsService.test().subscribe(
+      response => console.log(response)
+    )
+  }
 }

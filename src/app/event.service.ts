@@ -26,4 +26,5 @@ export class EventService {
   klepsydraStop(){
       document.getElementById('klepsydra').style.display = 'none';
   }
+
 }

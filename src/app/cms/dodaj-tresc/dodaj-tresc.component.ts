@@ -23,7 +23,11 @@ export class DodajTrescComponent implements OnInit, OnDestroy {
 
       this.route.params.subscribe(params => this.idTresc = parseInt(params['id']));
       if (!isNaN(this.idTresc)){
-          this.CmsService.getDetTresci(this.idTresc).subscribe(
+        const json = JSON.stringify({
+            'id':this.idTresc
+        })
+
+          this.CmsService.post('static/getDetTresci.php', json).subscribe(
               response => {
                   this.event.klepsydraStart();
                   this.tytul = response[0].static_name;
@@ -46,7 +50,13 @@ export class DodajTrescComponent implements OnInit, OnDestroy {
   }
 
   zapisz(){
-      this.CmsService.addTresc(this.tytul, this.tresc, this.idTresc).subscribe(
+    const json = JSON.stringify({
+        'tytul': this.tytul,
+        'tresc': this.tresc,
+        'idTresci': this.idTresc
+    })
+
+      this.CmsService.post('static/addTresc.php',json).subscribe(
           response => {
               if (response.kod == -1 ){
                   this.errorTytul = true;
@@ -56,6 +66,9 @@ export class DodajTrescComponent implements OnInit, OnDestroy {
                   this._route.navigateByUrl('/content-24');
                   this.event.wyswietlInfo('success', 'Dodano treść')
               }
+          },
+          error =>{
+            this.event.wyswietlInfo('error', 'Błąd zapisu')
           }
       )
   }

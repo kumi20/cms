@@ -71,7 +71,11 @@ grupaNewsow;
   ngOnInit() {
     this.route.params.subscribe(params => this.idNewsa = parseInt(params['id']));
     if(!isNaN(this.idNewsa)){
-        this.CmsService.getDetNews(this.idNewsa).subscribe(
+        const json = JSON.stringify({
+            'id':this.idNewsa
+        })
+
+        this.CmsService.post('news/getDetNews.php', json).subscribe(
             response => {
                 this.event.klepsydraStart();
                 if (response[0].news_status > 2 ) this.czyPublikowac = true;
@@ -111,11 +115,14 @@ grupaNewsow;
 
         
     }
-
-    this.CmsService.getGroupNews().subscribe(
+    let uri = 'news/newsGroup.php';
+    this.CmsService.get(uri).subscribe(
         response => {
             this.grupaNewsow = response;
-            this.CmsService.getGrupaNewsa(this.idNewsa).subscribe(
+            const json = JSON.stringify({
+                'id': this.idNewsa
+            })
+            this.CmsService.post('news/getGrupaNewsa.php', json).subscribe(
                 response => {
                    let pom = response;
                    this.grupaNewsow.forEach(element => {
@@ -145,7 +152,7 @@ grupaNewsow;
         const name = new Date().getTime() + Math.round(Math.random() * 10000000);
         const nameFile = item.file.name.split('.');
         item.file.name = name.toString() + '.' + nameFile[1];
-        this.news_lead_img = 'http://kumi20.webd.pl/source/'+item.file.name;
+        this.news_lead_img = this.CmsService.sourceImageNews+item.file.name;
     }
 
     //zdarzenie wywoluje sie po zakończeniu uploudu pliku
@@ -156,7 +163,9 @@ grupaNewsow;
             this.event.wyswietlInfo('success', 'Dodano zdjęcie newsa')
     };
 
-
+    this.uploader.onBeforeUploadItem = (item) =>{
+        item.url = this.CmsService.uriNewsImage;
+      }
 }
 
 powrot(){
@@ -172,8 +181,21 @@ zapisz(){
     this.grupaNewsow = pom;
     if( this.news_pub_date == null || this.news_name == '') this.event.wyswietlInfo('error','Uzupełnij wszystkie wymagane pola');
     else{
-        this.CmsService.addNews(this.czyPublikowac, this.news_pub_date.formatted, this.news_name, this.news_lead_img, this.news_lead,this.news_content,this.idNewsa, this.grupaNewsow).subscribe(
+        const json = JSON.stringify({
+            'czyPublikowac': this.czyPublikowac,
+            'news_pub_date': this.news_pub_date.formatted,
+            'news_name': this.news_name,
+            'news_lead_img': this.news_lead_img,
+            'news_lead':  this.news_lead,
+            'news_content': this.news_content,
+            'idNewsa': this.idNewsa,
+            'grupa': this.grupaNewsow 
+        })
+
+
+        this.CmsService.post('news/addNews.php', json).subscribe(
             response => {
+                console.log(response)
                 this._route.navigateByUrl('/content-5');
                this.event.wyswietlInfo('success', 'Dodano newsa')
             }

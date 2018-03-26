@@ -73,9 +73,6 @@ export class ImageModalComponent implements OnInit {
   closeGallery() {
   this.smooth = false;
   this.zoom = false;
-  if (screenfull.enabled) {
-     screenfull.exit();
-  }
   this.opened = false;
   this.cancelEvent.emit(null);
   }

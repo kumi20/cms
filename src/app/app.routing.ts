@@ -18,10 +18,14 @@ import { StronaComponent } from './cms/strona/strona.component';
 import { KontenerComponent } from './cms/kontener/kontener.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContentComponent } from './cms/content/content.component';
+import { MenuComponent } from './cms/menu/menu.component';
+import { MenuDetalisComponent } from './cms/menu-detalis/menu-detalis.component';
+import { GalleryComponent } from './cms/gallery/gallery.component';
+import { AddGalleryComponent } from './cms/add-gallery/add-gallery.component';
 
 /// ROUTING
 const routesConfig: Routes = [
-    { path: '', component: DashboardComponent},
+    { path: '', component: LoginComponent},
     { path: 'page/:id/:name', component: DashboardComponent},
     { path: 'cms', component: LoginComponent},
     { path: 'content', component: ContentComponent, canActivate: [AuthGuard]},
@@ -40,6 +44,11 @@ const routesConfig: Routes = [
     { path: 'dodajUzytkownika/:id', component: AddUserComponent, canActivate: [AuthGuard]},
     { path: 'content-3', component: StronaComponent, canActivate: [AuthGuard]},
     { path: 'content-3/:id/:nazwa', component: StronaComponent, canActivate: [AuthGuard]},
+    { path: 'content-2', component: MenuComponent, canActivate: [AuthGuard]},
+    { path: 'content-2/:id', component: MenuDetalisComponent, canActivate: [AuthGuard]},
+    { path: 'content-6', component: GalleryComponent, canActivate: [AuthGuard]},
+    { path: 'dodajGalerie', component: AddGalleryComponent, canActivate: [AuthGuard]},
+    { path: 'dodajGalerie/:id', component: AddGalleryComponent, canActivate: [AuthGuard]},
     { path: 'test', component: KontenerComponent },
     { path: '**', component: BrakStronyComponent},
     

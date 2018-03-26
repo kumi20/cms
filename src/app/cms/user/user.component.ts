@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.event.klepsydraStart();
-      this.CmsService.getUser().subscribe(
+      this.CmsService.get('user/getUser.php').subscribe(
           response => {
               this.users = response;
               this.event.klepsydraStop();
@@ -35,7 +35,10 @@ export class UserComponent implements OnInit {
   }
 
   deleteTresc(){
-        this.CmsService.deleteUzytkownik(this.idUser).subscribe(
+    const json = JSON.stringify({
+        'id': this.idUser,
+    })
+        this.CmsService.post('user/deleteUser.php', json).subscribe(
             response => {
                 this.ngOnInit();
                 document.getElementById('closeUsunTresc').click();

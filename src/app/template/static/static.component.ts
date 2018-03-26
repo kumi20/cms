@@ -22,7 +22,10 @@ export class StaticComponent implements OnInit {
   ngOnInit() {
     this.idModal = new Date().getTime() + Math.round(Math.random() * 10000000);
     this.event.klepsydraStart();
-     this.CmsService.getStatic(this.idtresci).subscribe(
+    const json = JSON.stringify({
+      'id':this.idtresci
+    })
+     this.CmsService.post('template/static/getStatic.php', json).subscribe(
          response => {
            this.tresc = response[0].static_content;
             document.getElementById(this.idModal).innerHTML = this.tresc; 

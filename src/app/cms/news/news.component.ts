@@ -25,7 +25,9 @@ export class NewsComponent implements OnInit {
   ngOnInit() {
     this.event.klepsydraStart();
     this.route.params.subscribe(params => this.page = parseInt(params['id']));
-        this.CmsService.getNewsy().subscribe(
+
+    let uri = 'news/getNewsy.php';
+        this.CmsService.get(uri).subscribe(
             response => {
                 this.newsy = response;
                 this.event.klepsydraStop();
@@ -33,13 +35,14 @@ export class NewsComponent implements OnInit {
             error => this.event.klepsydraStop()
         )
 
-    this.CmsService.getGroupNews().subscribe(
+    let grupa = 'news/newsGroup.php';    
+    this.CmsService.get(grupa).subscribe(
         response => this.grupaNewsow = response
     )
   }
 
   pageChanged(page){
-    this._route.navigate(['/5',page]);
+    this._route.navigate(['/content-5',page]);
     return page;
   }
 
@@ -57,9 +60,13 @@ export class NewsComponent implements OnInit {
   }
 
  deleteTresc(){
-    this.CmsService.deleteNews(this.idNewsa).subscribe(
+    const json = JSON.stringify({
+        'id': this.idNewsa
+    })
+    this.CmsService.post('news/deleteNews.php', json).subscribe(
         response =>{
-            this.CmsService.getNewsy().subscribe(
+            let uri = 'news/getNewsy.php';
+            this.CmsService.get(uri).subscribe(
                 response => {
                     this.newsy = response;
                     this.event.wyswietlInfo('info', 'Usunięto newsa');
@@ -76,9 +83,13 @@ export class NewsComponent implements OnInit {
  }
 
  deleteGrupa(){ 
-    this.CmsService.deleteGroupNews(this.idGroup).subscribe(
+    const json = JSON.stringify({
+        'id': this.idGroup
+    })
+    this.CmsService.post('news/deleteGroupNews.php', json).subscribe(
         response => {
-            this.CmsService.getGroupNews().subscribe(
+            let grupa = 'news/newsGroup.php'; 
+            this.CmsService.get(grupa).subscribe(
                 response => {
                     this.grupaNewsow = response;
                     document.getElementById('closeGrupa').click();

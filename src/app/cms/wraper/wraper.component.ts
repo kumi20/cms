@@ -44,7 +44,11 @@ export class WraperComponent implements OnInit {
 
   pobierzKontrolki(){
         this.event.klepsydraStart();
-        this.CmsService.getContainerElement(this.idKontenera, this.idPage).subscribe(
+        const json = JSON.stringify({
+            'idContainer': this.idKontenera,
+            'idPage': this.idPage
+        })
+        this.CmsService.post('page/getContainerElement.php', json).subscribe(
             response => {
                 this.kontrolki = response;
                 this.wyswietlKontrolki();
@@ -85,7 +89,11 @@ export class WraperComponent implements OnInit {
   }
 
   usun(){
-      this.CmsService.deleteelementPage(this.deleteId).subscribe(
+    const json = JSON.stringify({
+        'id': this.deleteId
+    })
+
+      this.CmsService.post('page/deleteElementPages.php', json).subscribe(
           response => {
                 this.modals.hide();
                 //location.reload();
@@ -98,7 +106,11 @@ export class WraperComponent implements OnInit {
   }
 
   upElement(id, idOrder){
-        this.CmsService.elementUP(id.pageElement, this.idKontenera).subscribe(
+    const json = JSON.stringify({
+        'idPageElement': id.pageElement,
+        'idKontenera': this.idKontenera
+    })
+        this.CmsService.post('page/positionElementUp.php', json).subscribe(
             response => {
                 this.ngOnInit();
                 this.event.wyswietlInfo('info','przeniesiono element o 1 pozycje do góry');
@@ -108,7 +120,11 @@ export class WraperComponent implements OnInit {
   }
 
   downlElement(id, idOrder){
-        this.CmsService.elementDown(id.pageElement, this.idKontenera).subscribe(
+    const json = JSON.stringify({
+        'idPageElement': id.pageElement,
+        'idKontenera': this.idKontenera
+      })
+        this.CmsService.post('page/positionElementDown.php', json).subscribe(
             response =>{
                 this.ngOnInit();
                 this.event.wyswietlInfo('info', 'przeniesiono element o 1 pozycje do dołu');

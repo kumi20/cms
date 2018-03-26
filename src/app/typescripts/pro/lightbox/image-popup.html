@@ -6,8 +6,7 @@
 <div  tabindex="0" class="ng-overlay" [class.hide_lightbox]="opened == false">
   <div class="top-bar">
     <span class="info-text">{{ currentImageIndex + 1 }}/{{ modalImages.length }}</span>    
-    <a class="close-popup" (click)="closeGallery()" (click)="toggleRestart()"></a>
-    <a *ngIf="!is_iPhone_or_iPod" class="fullscreen-toogle" [class.toggled]='fullscreen' (click)="fullScreen()"></a>
+    <a class="close-popup" (click)="closeGallery()"></a>
     <a class="zoom-toogle" [class.zoom]='zoom' (click)="toggleZoomed()" *ngIf="!isMobile"></a>
   </div>
   <div class="ng-gallery-content">

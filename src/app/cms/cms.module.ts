@@ -38,6 +38,10 @@ import { KontenerComponent } from './kontener/kontener.component';
 import { PagesComponent } from './pages/pages.component';
 import { SubPagesComponent } from './sub-pages/sub-pages.component';
 import { ContentComponent } from './content/content.component';
+import { MenuComponent } from './menu/menu.component';
+import { MenuDetalisComponent } from './menu-detalis/menu-detalis.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { AddGalleryComponent } from './add-gallery/add-gallery.component';
 
 @NgModule({
   imports: [
@@ -73,7 +77,11 @@ import { ContentComponent } from './content/content.component';
     KontenerComponent,
     PagesComponent,
     SubPagesComponent,
-    ContentComponent
+    ContentComponent,
+    MenuComponent,
+    MenuDetalisComponent,
+    GalleryComponent,
+    AddGalleryComponent
   ],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]

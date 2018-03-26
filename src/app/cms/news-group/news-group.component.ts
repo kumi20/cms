@@ -20,7 +20,11 @@ export class NewsGroupComponent implements OnInit {
       this.route.params.subscribe(params => this.idGroup = parseInt(params['id']));
       if (isNaN(this.idGroup)) this.idGroup = 0;
       if (this.idGroup != 0 ){
-          this.CmsService.getDetGroupNews(this.idGroup).subscribe(
+        const json = JSON.stringify({
+            'id':this.idGroup
+          })
+          let uri = 'news/getDetGroup.php';
+          this.CmsService.post(uri,json).subscribe(
               response => {
                   this.event.klepsydraStart();
                   this.nazwa = response[0].news_group_name;
@@ -38,7 +42,13 @@ export class NewsGroupComponent implements OnInit {
   }
 
   zapisz(){
-      this.CmsService.addGroupNews(this.nazwa, this.liczba, this.idGroup).subscribe(
+    const json = JSON.stringify({
+        'news_group_name': this.nazwa,
+        'news_group_perpage': this.liczba,
+        'idGroup': this.idGroup
+    })
+
+      this.CmsService.post('news/addGroup.php', json).subscribe(
           response => {
               this._route.navigateByUrl('/content-5');
                 this.event.wyswietlInfo('success', 'Dodano nową grupę newsa');
