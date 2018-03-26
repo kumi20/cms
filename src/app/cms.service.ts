@@ -16,6 +16,30 @@ export class CmsService {
 
   uriNewsImage = 'http://kumi20.webd.pl/api/plik.php';
   sourceImageNews = 'http://kumi20.webd.pl/source/';
+    
+  month: Array<any> = [
+      {value:'01', label: 'styczeń'},
+      {value:'02', label: 'luty'},
+      {value:'03', label: 'marzec'},
+      {value:'04', label: 'kwiecień'},
+      {value:'05', label: 'maj'},
+      {value:'06', label: 'czerwiec'},
+      {value:'07', label: 'lipiec'},
+      {value:'08', label: 'sierpień'},
+      {value:'09', label: 'wrzesień'},
+      {value:'10', label: 'październik'},
+      {value:'11', label: 'listopad'},
+      {value:'12', label: 'grudzień'}
+    ];
+    
+    year: Array<any> = [
+      {value:'2014', label: '2014'},
+      {value:'2015', label: '2015'},
+      {value:'2016', label: '2016'},
+      {value:'2017', label: '2017'},
+      {value:'2018', label: '2018'},
+      {value:'2019', label: '2019'}
+    ];
 
   headers:Headers = new Headers;
 
