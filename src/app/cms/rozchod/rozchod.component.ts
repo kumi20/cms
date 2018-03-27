@@ -77,7 +77,6 @@ export class RozchodComponent implements OnInit {
                 this.event.klepsydraStart();
                 this.CmsService.get(`kpir/getRozchod.php?id=${this.rozchod.idRozchodu}`).subscribe(
                     response =>{
-                        console.log('rozchod', response);
                         this.rozchod.rok = response[0].rok;
                         this.rozchod.dataZd = {'formatted': response[0].data_zd};
                         this.rozchod.miesiac = response[0].miesiac;

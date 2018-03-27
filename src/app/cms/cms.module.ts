@@ -45,6 +45,7 @@ import { AddGalleryComponent } from './add-gallery/add-gallery.component';
 import { KpirComponent } from './kpir/kpir.component';
 import { PrzychodComponent } from './przychod/przychod.component';
 import { RozchodComponent } from './rozchod/rozchod.component';
+import { KontrahenciComponent } from './kontrahenci/kontrahenci.component';
 
 @NgModule({
   imports: [
@@ -87,7 +88,8 @@ import { RozchodComponent } from './rozchod/rozchod.component';
     AddGalleryComponent,
     KpirComponent,
     PrzychodComponent,
-    RozchodComponent
+    RozchodComponent,
+    KontrahenciComponent
   ],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]

@@ -25,6 +25,7 @@ import { AddGalleryComponent } from './cms/add-gallery/add-gallery.component';
 import { KpirComponent } from './cms/kpir/kpir.component'; 
 import { PrzychodComponent } from './cms/przychod/przychod.component';
 import { RozchodComponent} from './cms/rozchod/rozchod.component';
+import { KontrahenciComponent } from './cms/kontrahenci/kontrahenci.component';
 
 /// ROUTING
 const routesConfig: Routes = [
@@ -57,6 +58,7 @@ const routesConfig: Routes = [
     { path: 'dodajRozchod', component: RozchodComponent, canActivate: [AuthGuard]},
     { path: 'dodajRozchod/:id', component: RozchodComponent, canActivate: [AuthGuard]},
     { path: 'dodajGalerie/:id', component: AddGalleryComponent, canActivate: [AuthGuard]},
+    { path: 'content-36', component: KontrahenciComponent, canActivate: [AuthGuard]},
     { path: 'test', component: KontenerComponent },
     { path: '**', component: BrakStronyComponent},
     
