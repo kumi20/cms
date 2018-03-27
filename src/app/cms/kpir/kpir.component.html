@@ -14,12 +14,36 @@
                 </div>
             </div>
             
+            
+            <div class="container">
+              <div class="row">
+                   <div class="col-md-3">
+                       <br><br>
+                        <div class="md-form">
+                            <mdb-select class="select" [options]="year" [filterEnabled]="true" placeholder="-- wybierz rok --" [(ngModel)]="actualYear" #yearSelected></mdb-select>
+                            <label class="active">Rok:</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                       <br><br>
+                        <div class="md-form">
+                            <mdb-select class="select" [options]="month" [filterEnabled]="true" placeholder="-- wybierz miesiąc --" [(ngModel)]="actualMonth" #monthSelected></mdb-select>
+                            <label class="active">Miesiąc:</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <br><br>
+                        <button class="btn btn-outline-success waves-effect pokaz" (click)="showKPiR()">Pokaż</button>
+                    </div>
+               </div>
+            </div>
+            
              <div class="col-lg-12">
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th style="width:10%">#</th>
-                            <th >data zd. gosp.</th>
+                            <th style="width:5%">#</th>
+                            <th style="width:10%">data zd. gosp.</th>
                             <th >nr dow. księg.</th>
                             <th>imię i nazwisko (firma)</th>
                             <th>razem przychód</th>
@@ -31,10 +55,56 @@
                         </tr>
                     </thead>
                     <tbody>
-                            
+                        <tr *ngFor="let dowod of kpir; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{dowod.data_zd}}</td>
+                            <td>{{dowod.nr_dow}}</td>    
+                            <td>{{dowod.name}}</td>
+                            <td>{{dowod.razem_przychod}}</td>
+                            <td>{{dowod.zakup_towarow}}</td>
+                            <td>{{dowod.koszty_uboczne}}</td>
+                            <td>{{dowod.wynagrodzenie_gotowka}}</td>
+                            <td>{{dowod.pozostale_wydatki}}</td>
+                            <td>{{dowod.opis_zdarzenia}}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
+            
+            <br><br><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th style="width:35%"></th>
+                                    <th>w danym miesiącu</th>
+                                    <th>od początku roku</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>razem przychód</td>
+                                    <td>{{statistic.przychod_miesiac}} zł</td>
+                                    <td>{{statistic.przychod_rok}} zł</td>
+                                </tr>
+                                <tr>
+                                    <td>koszt uzyskania przychodu</td>
+                                    <td>{{statistic.wydatki_miesiac}} zł</td>
+                                    <td>{{statistic.wydatki_rok}} zł</td>
+                                </tr>
+                                <tr>
+                                    <td>dochód</td>
+                                    <td>{{statistic.dochod_miesiac}} zł</td>
+                                    <td>{{statistic.dochod_rok}} zł</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
     </div>
     
     

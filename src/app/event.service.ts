@@ -26,5 +26,11 @@ export class EventService {
   klepsydraStop(){
       document.getElementById('klepsydra').style.display = 'none';
   }
+    
+  formatMonth(month){
+      month++;
+      if (month < 10) month = '0'+month;
+      return month;
+  }    
 
 }

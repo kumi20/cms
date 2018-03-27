@@ -52,3 +52,71 @@ label{
     font-size:10px;
     color: #757575;
 }
+
+mdb-select > div > div.single {
+    border-width: 0px;
+}
+
+mdb-select {
+    border: 1px solid #B8B8B8;
+    border-radius: 5px;
+    margin-top: 5px;
+    height: 1.9rem;
+    .active {
+        padding-bottom: 4px !important;
+    }
+    font-size: 12px;
+    font-family: 'Arial'  !important;
+    transition: all 0.15s;   
+    .single {
+        font-size: 15px !important;
+        padding: 0 !important;
+        border-bottom-width: 0px;
+        height: 1.9rem;
+        .value {
+            padding: 5px 8px !important;
+            border: none !important;
+            height: 1.9rem;
+        }
+        .placeholder {
+            padding: 5px 8px !important;
+            border: none !important;
+            height: 1.9rem;
+        }
+        .toggle {
+            z-index: 2 !important;
+            transition: 0.5s;
+        }
+    }
+    .dropdown-content {
+        border-radius: 5px;
+        z-index: 11 !important;
+        .select-option {
+            font-size: 12px;
+            font-family: 'Arial';
+            padding: 0;
+        };
+        li {
+            height: 28px;
+        }
+    }
+    .open-icon {
+        transform: rotate(180deg) translateY(16px) !important;
+        transition: 0.2s;
+    }
+    .closed-icon {
+        transition: 0.2s;
+    }
+}
+mdb-select > div > div.single > div.value,
+mdb-select > div > div.single > div.placeholder {
+    line-height: normal;
+}
+mdb-select-dropdown{ 
+transition: 0s !important; 
+}
+
+.pokaz{
+    height: 30px;
+    padding-top:7px;
+}
