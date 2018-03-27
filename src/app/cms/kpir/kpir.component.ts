@@ -18,7 +18,13 @@ export class KpirComponent implements OnInit{
   actualDate;
   actualYear;
   actualMonth;  
-  statistic;    
+  statistic = [{'przychod_miesiac': ''},
+                {'przychod_rok': ''},
+               {'wydatki_miesiac': ''},
+               {'wydatki_rok': ''},
+               {'dochod_miesiac': ''},
+               {'dochod_rok': ''},
+              ];    
 
   constructor(private CmsService: CmsService, private route: ActivatedRoute, private _route: Router, private event: EventService) { }
 
@@ -49,7 +55,6 @@ export class KpirComponent implements OnInit{
         this.CmsService.get(`kpir/statystyka.php?month=${this.actualMonth}&year=${this.actualYear}`).subscribe(
             response =>{
                 this.statistic = response;
-                console.log('statystyka', response)
             },
             error =>{
                 this.event.wyswietlInfo('error','Błąd pobierania danych');
