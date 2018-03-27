@@ -1,0 +1,43 @@
+// ACCORDION
+.accordion {
+    .sb-item-body {
+        transition: 0.5s;
+        overflow: hidden;
+    }
+    .card {
+        border-bottom: 1px solid #eee;
+        box-shadow: none;
+        .card-header {
+            color: #0275d8;
+
+            background: transparent;
+            border-bottom: 0;
+            a {
+                .rotate-icon {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+        .fa-angle-down {
+            float: right;
+        }
+        .card-block {
+            padding-top: .25rem;
+        }
+
+        &.is-collapsed {
+            .card-header {
+               a {
+                   .rotate-icon {
+                       transform: rotate(0deg);
+                   }
+               }
+            }
+        }
+    }
+}
+
+// Collapsible body
+.collapsible-body {
+    display: none;
+}

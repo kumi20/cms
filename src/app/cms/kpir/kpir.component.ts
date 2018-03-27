@@ -14,6 +14,17 @@ export class KpirComponent implements OnInit {
   constructor(private CmsService: CmsService, private route: ActivatedRoute, private _route: Router, private event: EventService) { }
 
   ngOnInit() {
+      this.event.klepsydraStart();
+      this.CmsService.get(`kpir/getKpir.php?month=03&year=2018`).subscribe(
+            response =>{
+                console.log('response', response);
+                this.event.klepsydraStop();
+            },
+            error=>{
+                this.event.wyswietlInfo('error','Błąd pobierania danych');
+                this.event.klepsydraStop();
+            }
+      )
   }
 
 }
