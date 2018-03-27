@@ -58,6 +58,7 @@ export class PrzychodComponent implements OnInit {
       this.route.params.subscribe(params => this.przychod.idPrzychodu = parseInt(params['id']));
       if (isNaN(this.przychod.idPrzychodu)) this.przychod.idPrzychodu = 0;
       
+      
       this.month = this.CmsService.month;
       this.year = this.CmsService.year;
       
@@ -73,12 +74,37 @@ export class PrzychodComponent implements OnInit {
             }
             this.odbiorcySelect.updateOptionsList();
             this.event.klepsydraStop();
+            
+            if (this.przychod.idPrzychodu != 0){
+            this.event.klepsydraStart();
+            this.CmsService.get(`kpir/getPrzychod.php?id=${this.przychod.idPrzychodu}`).subscribe(
+                response =>{
+                    this.przychod.rok = response[0].rok;
+                    this.przychod.dataZd = {'formatted': response[0].data_zd};
+                    this.przychod.miesiac = response[0].miesiac;
+                    this.przychod.nr_dow = response[0].nr_dow;
+                    this.przychod.opis_zdarzenia = response[0].opis_zdarzenia;
+                    this.przychod.id_kont = response[0].id_kont;
+                    this.przychod.przych = response[0].przych;
+                    this.przychod.pozostale_przychody = response[0].pozostale_przychody;
+                    this.przychod.uwagi = response[0].uwagi;
+                    this.event.klepsydraStop();
+                },
+                error =>{
+                    this.event.klepsydraStop();
+                    this.event.wyswietlInfo('error', 'Błąd pobierania danych'); 
+                }
+            )    
+          }
+            
         },
         error =>{
             this.event.wyswietlInfo('error', 'Błąd pobierania danych');
             this.event.klepsydraStop();
         }  
       )
+      
+      
       
   }
     
@@ -89,7 +115,7 @@ export class PrzychodComponent implements OnInit {
     zapisz(){
         let errorWalidation = false;
         
-        if (this.przychod.dataZd!= null) this.przychod.dataZd = (<any>this.przychod.dataZd).formatted;
+        if ((<any>this.przychod.dataZd).formatted!= null) this.przychod.dataZd = (<any>this.przychod.dataZd).formatted;
         this.przychod.przych = this.przychod.przych.replace(',','.');
         this.przychod.pozostale_przychody = this.przychod.pozostale_przychody.replace(',','.');
         
@@ -113,4 +139,17 @@ export class PrzychodComponent implements OnInit {
         }
     }
 
+    delete(){
+        this.CmsService.get(`kpir/deleteKpir.php?id=${this.przychod.idPrzychodu}`).subscribe(
+            respnose =>{
+                this.event.wyswietlInfo('info', 'usunięto przychód');
+                    this.event.klepsydraStop();
+                    this._route.navigateByUrl('/content-35');
+            },
+            error =>{
+                    this.event.wyswietlInfo('error', 'Błąd zapisu danych');
+                    this.event.klepsydraStop();
+                }
+        )
+    }
 }

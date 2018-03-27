@@ -2,7 +2,7 @@ export class przychod{
     idPrzychodu: number = 0;
     miesiac: string = '';
     rok: string = '';
-    dataZd: string = '';
+    dataZd: any = '';
     nr_dow: string = '';
     opis_zdarzenia: string = '';
     id_kont: string = '';

@@ -52,6 +52,7 @@ const routesConfig: Routes = [
     { path: 'dodajGalerie', component: AddGalleryComponent, canActivate: [AuthGuard]},
     { path: 'content-35', component: KpirComponent, canActivate: [AuthGuard]},
     { path: 'dodajPrzychod', component: PrzychodComponent, canActivate: [AuthGuard]},
+    { path: 'dodajPrzychod/:id', component: PrzychodComponent, canActivate: [AuthGuard]},
     { path: 'dodajGalerie/:id', component: AddGalleryComponent, canActivate: [AuthGuard]},
     { path: 'test', component: KontenerComponent },
     { path: '**', component: BrakStronyComponent},

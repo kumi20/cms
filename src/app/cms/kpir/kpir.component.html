@@ -55,7 +55,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let dowod of kpir; let i = index">
+                        <tr *ngFor="let dowod of kpir; let i = index" (click)="edytuj(dowod.czy_przy,dowod.id)">
                             <td>{{i+1}}</td>
                             <td>{{dowod.data_zd}}</td>
                             <td>{{dowod.nr_dow}}</td>    
