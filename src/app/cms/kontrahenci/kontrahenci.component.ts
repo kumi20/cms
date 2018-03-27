@@ -11,6 +11,7 @@ import { EventService } from '../../event.service';
 export class KontrahenciComponent implements OnInit {
     
     kontrahenci;
+    page;
 
   constructor(private CmsService: CmsService, private route: ActivatedRoute, private _route: Router, private event: EventService) { }
 
