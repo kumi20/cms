@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CmsService } from '../../cms.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../../event.service';
-
+import { statistic } from './statistic';
 
 @Component({
   selector: 'app-kpir',
@@ -18,13 +18,7 @@ export class KpirComponent implements OnInit{
   actualDate;
   actualYear;
   actualMonth;  
-  statistic = [{'przychod_miesiac': ''},
-                {'przychod_rok': ''},
-               {'wydatki_miesiac': ''},
-               {'wydatki_rok': ''},
-               {'dochod_miesiac': ''},
-               {'dochod_rok': ''},
-              ];    
+  statistic: statistic = new statistic();  
 
   constructor(private CmsService: CmsService, private route: ActivatedRoute, private _route: Router, private event: EventService) { }
 
