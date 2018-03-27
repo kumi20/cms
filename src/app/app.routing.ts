@@ -23,6 +23,7 @@ import { MenuDetalisComponent } from './cms/menu-detalis/menu-detalis.component'
 import { GalleryComponent } from './cms/gallery/gallery.component';
 import { AddGalleryComponent } from './cms/add-gallery/add-gallery.component';
 import { KpirComponent } from './cms/kpir/kpir.component'; 
+import { PrzychodComponent } from './cms/przychod/przychod.component';
 
 /// ROUTING
 const routesConfig: Routes = [
@@ -50,6 +51,7 @@ const routesConfig: Routes = [
     { path: 'content-6', component: GalleryComponent, canActivate: [AuthGuard]},
     { path: 'dodajGalerie', component: AddGalleryComponent, canActivate: [AuthGuard]},
     { path: 'content-35', component: KpirComponent, canActivate: [AuthGuard]},
+    { path: 'dodajPrzychod', component: PrzychodComponent, canActivate: [AuthGuard]},
     { path: 'dodajGalerie/:id', component: AddGalleryComponent, canActivate: [AuthGuard]},
     { path: 'test', component: KontenerComponent },
     { path: '**', component: BrakStronyComponent},
