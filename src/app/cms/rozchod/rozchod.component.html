@@ -1,0 +1,112 @@
+<app-navbar></app-navbar>
+<div class="container">
+     <div class="row card card-cascade narrower">
+            <div  class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+                <a class="white-text mx-3" href="">Rozchód</a>
+            </div>
+            
+             <br>
+             
+             <div class="container">
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="md-form">
+                            <mdb-select class="select" [options]="year" [filterEnabled]="true" placeholder="-- wybierz rok --" [(ngModel)]="rozchod.rok"></mdb-select>
+                            <label class="active">Rok:</label>
+                         </div>
+                     </div>
+                     
+                     <div class="col-md-6">
+                         <div class="md-form">
+                           <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="rozchod.dataZd"></my-date-picker>
+                            <label class="active">Data zdarzenia gospodarczego:</label>
+                         </div>
+                     </div>
+                     
+                 </div>
+                 
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="md-form">
+                            <mdb-select class="select" [options]="month" [filterEnabled]="true" placeholder="-- wybierz miesiąc --" [(ngModel)]="rozchod.miesiac"></mdb-select>
+                            <label class="active">Miesiąc:</label>
+                         </div>
+                     </div>
+                     
+                     <div class="col-md-6">
+                         <div class="md-form">
+                            <input type="text" class="form-control" [(ngModel)]="rozchod.nr_dow">
+                            <label class="active">Numer dowodu ksiegowego:</label>
+                         </div>
+                     </div>
+                     
+                 </div>
+                 
+                 <div class="row">
+                     <div class="col-md-12">
+                         <div class="md-form">
+                            <input type="text" class="form-control" [(ngModel)]="rozchod.opis_zdarzenia">
+                            <label class="active">Opis zdarzenia:</label>
+                         </div>
+                     </div>
+                 </div>
+                 
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="md-form">
+                            <mdb-select class="select" [options]="dostawcy" [filterEnabled]="true" placeholder="-- wybierz kontrahenta --" [(ngModel)]="rozchod.id_kont" #dostawcySelect></mdb-select>
+                            <label class="active">Kontrahent:</label>
+                         </div>
+                     </div>
+                 </div>
+                 
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="md-form">
+                            <input type="text" class="form-control" [(ngModel)]="rozchod.zakup_towarow">
+                            <label class="active">Zak. tow. handl. i mat. wg cen zakupu:</label>
+                         </div>
+                     </div>
+                     
+                     <div class="col-md-6">
+                         <div class="md-form">
+                            <input type="text" class="form-control" [(ngModel)]="rozchod.wynagrodzenie_gotowka">
+                            <label class="active">Wynagr. w gotówce i w nat.:</label>
+                         </div>
+                     </div>
+                 </div>
+                 
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="md-form">
+                            <input type="text" class="form-control" [(ngModel)]="rozchod.koszty_uboczne">
+                            <label class="active">Koszty uboczne zakupu:</label>
+                         </div>
+                     </div>
+                     
+                     <div class="col-md-6">
+                         <div class="md-form">
+                            <input type="text" class="form-control" [(ngModel)]="rozchod.pozostale_wydatki">
+                            <label class="active">Pozostałe wydatki:</label>
+                         </div>
+                     </div>
+                 </div>
+                 
+                 <div class="row">
+                     <div class="col-md-12">
+                         <div class="md-form">
+                            <input type="text" class="form-control" [(ngModel)]="rozchod.uwagi">
+                            <label class="active">Uwagi:</label>
+                         </div>
+                     </div>
+                 </div>
+                 
+                 <div class="row">
+                    <div class="col-lg-12">
+                        <button class="btn btn-outline-primary waves-effect" (click)="powrot()">Powrót</button>
+                        <button class="btn btn-outline-danger waves-effect" (click)="delete()" *ngIf="rozchod.idRozchodu!=0">Usuń</button>
+                        <button class="btn btn-outline-success waves-effect" (click)="zapisz()">Zapisz</button>
+                    </div>
+                </div> 
+    </div>
+</div>

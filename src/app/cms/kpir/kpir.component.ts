@@ -58,6 +58,6 @@ export class KpirComponent implements OnInit{
     
     edytuj(czyPrzych,id){
         if(czyPrzych == 1) this._route.navigate(['/dodajPrzychod',id]);
-        else this._route.navigate(['/dodajRozchód',id]);
+        else this._route.navigate(['/dodajRozchod',id]);
     }
 }

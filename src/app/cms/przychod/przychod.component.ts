@@ -70,7 +70,7 @@ export class PrzychodComponent implements OnInit {
       this.CmsService.get(`kpir/getOdbiorcy.php`).subscribe(
         response =>{
             for(let i = 0; i < response.length; i++){
-                this.odbiorcy.push({value: response[i].id, label: response[i].name},);
+                this.odbiorcy.push({value: response[i].id, label: response[i].name});
             }
             this.odbiorcySelect.updateOptionsList();
             this.event.klepsydraStop();
