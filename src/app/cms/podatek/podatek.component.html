@@ -1,0 +1,132 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row card card-cascade narrower cards2">
+        <div _ngcontent-c4="" class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+                    
+            <a _ngcontent-c4="" class="white-text mx-3" href="">Podatek</a>
+                                            
+        </div>
+ 
+        <br>
+            
+        <div class="row">
+            <div class="col-md-3">
+               <br>
+                <div class="md-form">
+                    <mdb-select class="select" [options]="year" [filterEnabled]="true" placeholder="-- wybierz rok --" [(ngModel)]="actualYear" #yearSelected (selected)="showTax()"></mdb-select>
+                    <label class="active">Rok:</label>
+                </div>
+            </div>
+        </div>    
+            
+             <div class="col-lg-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:10%">#</th>
+                            <th >Rok</th>
+                            <th >Miesiąc</th>
+                            <th >Przychód</th>
+                            <th >Koszt uzyskania przychodu</th>
+                            <th>Dochód</th>
+                            <th>Kwota zaliczki</th>
+                            <th ></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let podatek of podatek; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{podatek.rok}}</td>
+                            <td>{{podatek.miesiac}}</td>
+                            <td>{{podatek.suma_przychodow | number:'.2-2'}} zł</td>
+                            <td>{{podatek.suma_kosztow | number:'.2-2'}} zł</td>
+                            <td>{{podatek.suma_przychodow - podatek.suma_kosztow | number:'.2-2'}} zł</td>
+                            <td>{{podatek.kwota_zaliczki | number:'.2-2'}} zł</td>
+                            <td>
+                                <i class="fa fa-trash-o" aria-hidden="true" style="cursor:pointer; color:red" data-toggle="modal" (click)="delete(podatek.id)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        <br><br>
+            
+        <div class="row">
+            <div class="col-md-3">
+                <div class="md-form">
+                    <mdb-select class="select" [options]="year" [filterEnabled]="true" placeholder="-- wybierz rok --" [(ngModel)]="yearTax"></mdb-select>
+                    <label class="active">Rok:</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="md-form">
+                    <mdb-select class="select" [options]="month" [filterEnabled]="true" placeholder="-- wybierz miesiąc --" [(ngModel)]="actualMonth"></mdb-select>
+                    <label class="active">Miesiąc:</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-outline-success waves-effect pokaz" (click)="calculateTax()">Oblicz</button>
+            </div>
+        </div>
+        
+        <div *ngIf="taxCal">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-bold">Rok:</p> {{tax.rok}}
+                </div>
+                <div class="col-md-6">
+                    <p class="text-bold">Miesiąc:</p> {{tax.miesiac}}
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-bold">Suma zapłaconych składek na ub. społeczne:</p> {{tax.spoleczne | number:'.2-2'}} zł
+                </div>
+                <div class="col-md-6">
+                    <p class="text-bold">Suma odliczonych składek na ub. zdrowotne:</p> {{tax.zdrowotne | number:'.2-2'}} zł
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-bold">Podatek od początku roku:</p> {{tax.podatek | number:'.2-2'}} zł
+                </div>
+                <div class="col-md-6">
+                    <p class="text-bold">Zaliczka na podatek:</p> {{tax.zaliczka | number:'.2-2'}} zł
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:10%">#</th>
+                            <th >Przychód</th>
+                            <th >Koszt uzyskania przychodu</th>
+                            <th >Dochód</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>{{tax.przychod}} zł</td>
+                            <td>{{tax.koszt}} zł</td>
+                            <td>{{tax.przychod - tax.koszt | number:'.2-2'}} zł</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <button class="btn btn-outline-primary waves-effect" (click)="cancel()">Anuluj</button>
+                    <button class="btn btn-outline-success waves-effect" (click)="saveTax()">Zapisz</button>
+                </div>
+            </div>   
+       
+        </div>
+    </div>
+</div>
