@@ -47,6 +47,7 @@ import { PrzychodComponent } from './przychod/przychod.component';
 import { RozchodComponent } from './rozchod/rozchod.component';
 import { KontrahenciComponent } from './kontrahenci/kontrahenci.component';
 import { PomocComponent } from './pomoc/pomoc.component';
+import { AddKontrahentaComponent } from './add-kontrahenta/add-kontrahenta.component';
 
 @NgModule({
   imports: [
@@ -91,7 +92,8 @@ import { PomocComponent } from './pomoc/pomoc.component';
     PrzychodComponent,
     RozchodComponent,
     KontrahenciComponent,
-    PomocComponent
+    PomocComponent,
+    AddKontrahentaComponent
   ],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]

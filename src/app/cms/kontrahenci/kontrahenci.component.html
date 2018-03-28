@@ -4,7 +4,7 @@
             <div  class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
                 <a class="white-text mx-3" href="">Kontrahenci</a>
                 <div>
-                    <button class="btn btn-outline-white btn-rounded btn-sm px-2" type="button"  routerLink="/dodajPrzychod"><i class="fa fa-plus"></i> Dodaj kontrahenta</button>
+                    <button class="btn btn-outline-white btn-rounded btn-sm px-2" type="button"  routerLink="/dadajKontrahent"><i class="fa fa-plus"></i> Dodaj kontrahenta</button>
                 </div>
             </div>
             
@@ -26,7 +26,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let kontrahent of kontrahenci| paginate: { itemsPerPage: 5, currentPage:  page }; let i = index">
+                                <tr *ngFor="let kontrahent of kontrahenci| paginate: { itemsPerPage: 5, currentPage:  page }; let i = index" routerLink="/dadajKontrahent/{{kontrahent.id}}">
                                     <td>{{i + 1}}</td>
                                     <td>{{kontrahent.Name}}</td>
                                     <td>{{kontrahent.Street}}</td>
