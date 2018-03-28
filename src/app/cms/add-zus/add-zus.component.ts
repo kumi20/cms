@@ -88,7 +88,6 @@ export class AddZusComponent implements OnInit {
     }
     
     save(){
-        console.log('zus', this.zus);
         this.event.klepsydraStart();
         this.CmsService.post(`zus/postSkładka.php`, this.zus).subscribe(
             response =>{
