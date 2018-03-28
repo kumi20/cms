@@ -1,0 +1,115 @@
+<app-navbar></app-navbar>
+<div class="container">
+     <div class="row card card-cascade narrower">
+            <div  class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+                <a class="white-text mx-3" href="">Pomoc</a>
+            </div>
+            
+             <br>
+             
+             <!--Section: Contact v.3-->
+<section class="py-5">
+
+    <!--Grid row-->
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-12">
+
+            <!--Form with header-->
+            <div class="card">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card-body form">
+                            <!--Header-->
+                            <div class="formHeader mb-1 pt-3">
+                                <h3>
+                                    <i class="fa fa-envelope"></i> Potrzebujesz pomocy? Napisz do nas:</h3>
+                            </div>
+
+
+                                <!--Grid row-->
+                                <div class="row">
+
+                                    <!--Grid column-->
+                                    <div class="col-md-6">
+                                        <div class="md-form">
+                                            <input mdbActive type="text" id="form-contact-name" class="form-control" [(ngModel)]="pomoc.imie">
+                                            <label for="form-contact-name" class="">imię</label>
+                                        </div>
+                                    </div>
+                                    <!--Grid column-->
+
+                                    <!--Grid column-->
+                                    <div class="col-md-6">
+                                        <div class="md-form">
+                                            <input mdbActive type="text" id="form-contact-email" class="form-control" [(ngModel)]="pomoc.email">
+                                            <label for="form-contact-email" class="">e-mail</label>
+                                        </div>
+                                    </div>
+                                    <!--Grid column-->
+
+                                </div>
+                                <!--Grid row-->
+
+                                <!--Grid row-->
+                                <div class="row">
+
+                                    <!--Grid column-->
+                                    <div class="col-md-6">
+                                        <div class="md-form">
+                                            <input mdbActive type="text" id="form-contact-phone" class="form-control" [(ngModel)]="pomoc.telefon">
+                                            <label for="form-contact-phone" class="">telefon</label>
+                                        </div>
+                                    </div>
+                                    <!--Grid column-->
+
+                                    <!--Grid column-->
+                                    <div class="col-md-6">
+                                        <div class="md-form">
+                                            <input mdbActive type="text" id="form-contact-company" class="form-control" [(ngModel)]="pomoc.firma">
+                                            <label for="form-contact-company" class="">nazwa firmy</label>
+                                        </div>
+                                    </div>
+                                    <!--Grid column-->
+
+                                </div>
+                                <!--Grid row-->
+
+                                <!--Grid row-->
+                                <div class="row">
+
+                                    <!--Grid column-->
+                                    <div class="col-md-12">
+
+                                        <div class="md-form">
+                                            <textarea mdbActive type="text" id="form-contact-message" class="form-control md-textarea" rows="3" [(ngModel)]="pomoc.wiadomosc"></textarea>
+                                            <label for="form-contact-message">wiadomość</label>
+                                            <a class="btn-floating btn-lg blue" (click)="sendMessage()">
+                                                <i class="fa fa-send-o"></i>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <!--Grid column-->
+
+                                </div>
+                                <!--Grid row-->
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/Form with header-->
+
+        </div>
+        <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+</section>
+<!--Section: Contact v.3-->
+    </div>
+</div>
