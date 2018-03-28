@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MDBBootstrapModulePro } from './typescripts/pro';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -43,6 +43,7 @@ import { WrapperPagesComponent } from './wrapper-pages/wrapper-pages.component';
     DashboardComponent,
     DynamicPagesComponent,
     WrapperPagesComponent,
+    //CalendarComponent
   ],
   imports: [
     BrowserModule,

@@ -21,6 +21,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { Ng2PaginationModule } from 'ng2-pagination';
 import { MyDatePickerModule } from 'mydatepicker';
 import { FileUploadModule } from 'ng2-file-upload';
+import { CalendarComponent } from "angular2-fullcalendar/src/calendar/calendar";
 
 import { WraperComponent } from './wraper/wraper.component';
 import { DynamicComponentComponent } from './dynamic-component/dynamic-component.component';
@@ -51,6 +52,9 @@ import { AddKontrahentaComponent } from './add-kontrahenta/add-kontrahenta.compo
 import { PodatekComponent } from './podatek/podatek.component';
 import { ZusComponent } from './zus/zus.component';
 import { AddZusComponent } from './add-zus/add-zus.component';
+import { KalendarzComponent } from './kalendarz/kalendarz.component';
+
+import { FullCalendarModule } from 'ng-fullcalendar';
 
 @NgModule({
   imports: [
@@ -67,10 +71,12 @@ import { AddZusComponent } from './add-zus/add-zus.component';
     MDBBootstrapModule.forRoot(),
     MDBBootstrapModulePro.forRoot(),
     TemplateModule,
+    FullCalendarModule,
     BrowserAnimationsModule
   ],
   declarations: [
     EdytorComponent,
+    //CalendarComponent,
     NavbarComponent,
     TrescComponent,
     DodajTrescComponent,
@@ -99,7 +105,8 @@ import { AddZusComponent } from './add-zus/add-zus.component';
     AddKontrahentaComponent,
     PodatekComponent,
     ZusComponent,
-    AddZusComponent
+    AddZusComponent,
+    KalendarzComponent
   ],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]

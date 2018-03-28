@@ -31,6 +31,7 @@ import { AddKontrahentaComponent } from './cms/add-kontrahenta/add-kontrahenta.c
 import { PodatekComponent } from './cms/podatek/podatek.component';
 import { ZusComponent } from './cms/zus/zus.component';
 import { AddZusComponent } from './cms/add-zus/add-zus.component';
+import { KalendarzComponent } from './cms/kalendarz/kalendarz.component';
 
 /// ROUTING
 const routesConfig: Routes = [
@@ -70,6 +71,7 @@ const routesConfig: Routes = [
     { path: 'content-37', component: PodatekComponent, canActivate: [AuthGuard]},
     { path: 'content-38', component: ZusComponent, canActivate: [AuthGuard]},
     { path: 'dodajZus', component:AddZusComponent , canActivate: [AuthGuard]},
+    { path: 'content-21', component: KalendarzComponent, canActivate: [AuthGuard]},
     { path: 'test', component: KontenerComponent },
     { path: '**', component: BrakStronyComponent},
     
