@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row card card-cascade narrower cards2">
+        <div _ngcontent-c4="" class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+                    
+            <a _ngcontent-c4="" class="white-text mx-3" href="">Zus</a>
+            <div>
+                 <button class="btn btn-outline-white btn-rounded btn-sm px-2" type="button"  routerLink="/dodajZus"><i class="fa fa-plus"></i> Dodaj składkę</button>
+            </div>                               
+        </div>
+ 
+        <br>
+ 
+        <div class="row">
+            <div class="col-md-3">
+               <br>
+                <div class="md-form">
+                    <mdb-select class="select" [options]="year" [filterEnabled]="true" placeholder="-- wybierz rok --" [(ngModel)]="actualYear" #yearSelected (selected)="showZus()"></mdb-select>
+                    <label class="active">Rok:</label>
+                </div>
+            </div>
+        </div>    
+        
+         <div class="col-lg-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:10%">#</th>
+                            <th >Rok</th>
+                            <th >Miesiąc</th>
+                            <th >Termin płatności</th>
+                            <th >Składka społeczna</th>
+                            <th>Składka zdrowotna</th>
+                            <th>Składka na fundusz pracy</th>
+                            <th ></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                        <tr *ngFor="let zus of zus; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{zus.rok}}</td>
+                            <td>{{zus.miesiac}}</td>
+                            <td>{{zus.termin_platnosci}}</td>
+                            <td>{{zus.skladka_spoleczne}} zł</td>
+                            <td>{{zus.skladka_zdrowotne}} zł</td>
+                            <td>{{zus.skladka_fundusz_pracy}} zł</td>
+                            <td>
+                                <i class="fa fa-trash-o" aria-hidden="true" style="cursor:pointer; color:red" data-toggle="modal" (click)="delete(zus.id)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+    </div>
+</div>

@@ -1,0 +1,91 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row card card-cascade narrower cards2">
+        <div _ngcontent-c4="" class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+                    
+            <a _ngcontent-c4="" class="white-text mx-3" href="">Dodaj składke ZUS</a>                             
+        </div>
+ 
+        <br>
+ 
+        <div class="row">
+            <div class="col-md-3">
+                <div class="md-form">
+                    <mdb-select class="select" [options]="year" [filterEnabled]="true" placeholder="-- wybierz rok --" [(ngModel)]="zus.rok" (selected)="changeTerm()"></mdb-select>
+                    <label class="active">Rok:</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="md-form">
+                    <mdb-select class="select" [options]="month" [filterEnabled]="true" placeholder="-- wybierz miesiąc --" [(ngModel)]="zus.miesiac" (selected)="changeTerm()"></mdb-select>
+                    <label class="active">Miesiąc:</label>
+                </div>
+            </div>
+        </div>  
+        
+        <div class="row">
+            <div class="col-md-3">
+                <div class="md-form">
+                    <input type="text" class="form-control" [(ngModel)]="zus.termin_platnosci" disabled>
+                    <label class="active">Termin płatności:</label>
+                </div>
+            </div>
+        </div>   
+        
+         <div class="row">
+             <div class="col-md-6">
+                <h5>  Składka na ubezpieczenie społeczne:</h5><br>
+                 <div class="md-form">
+                    <input type="text" class="form-control" [(ngModel)]="zus.skladka_spoleczne">
+                    <label class="active">Wysokość składki [zł]:</label>
+                 </div>
+             </div>
+             <div class="col-md-6">
+                 <div class="md-form margin-top">
+                    <input type="text" class="form-control" [(ngModel)]="zus.data_spoleczne" disabled>
+                    <label class="active">Data wpłaty:</label>
+                 </div>
+             </div>
+         </div> 
+         
+         <div class="row">
+             <div class="col-md-6">
+                <h5>  Składka na ubezpieczenie zdrowotne:</h5><br>
+                 <div class="md-form">
+                    <input type="text" class="form-control" [(ngModel)]="zus.skladka_zdrowotne">
+                    <label class="active">Wysokość składki [zł]:</label>
+                 </div>
+             </div>
+             <div class="col-md-6">
+                 <div class="md-form margin-top">
+                    <input type="text" class="form-control" [(ngModel)]="zus.data_zdrowotne" disabled>
+                    <label class="active">Data wpłaty:</label>
+                 </div>
+             </div>
+         </div> 
+         
+         <div class="row">
+             <div class="col-md-6">
+                <h5>  Składka na fundusz pracy:</h5><br>
+                 <div class="md-form">
+                    <input type="text" class="form-control" [(ngModel)]="zus.skladka_fundusz_pracy">
+                    <label class="active">Wysokość składki [zł]:</label>
+                 </div>
+             </div>
+             <div class="col-md-6">
+                 <div class="md-form margin-top">
+                    <input type="text" class="form-control" [(ngModel)]="zus.data_fundusz_pracy" disabled>
+                    <label class="active">Data wpłaty:</label>
+                 </div>
+             </div>
+         </div> 
+         
+         <div class="row">
+            <div class="col-lg-12">
+                <button class="btn btn-outline-primary waves-effect" (click)="back()">Powrót</button>
+                <button class="btn btn-outline-success waves-effect" (click)="save()">Zapisz</button>
+            </div>
+        </div> 
+         
+    </div>
+</div>

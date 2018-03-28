@@ -49,6 +49,8 @@ import { KontrahenciComponent } from './kontrahenci/kontrahenci.component';
 import { PomocComponent } from './pomoc/pomoc.component';
 import { AddKontrahentaComponent } from './add-kontrahenta/add-kontrahenta.component';
 import { PodatekComponent } from './podatek/podatek.component';
+import { ZusComponent } from './zus/zus.component';
+import { AddZusComponent } from './add-zus/add-zus.component';
 
 @NgModule({
   imports: [
@@ -95,7 +97,9 @@ import { PodatekComponent } from './podatek/podatek.component';
     KontrahenciComponent,
     PomocComponent,
     AddKontrahentaComponent,
-    PodatekComponent
+    PodatekComponent,
+    ZusComponent,
+    AddZusComponent
   ],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]
