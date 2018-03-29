@@ -296,6 +296,7 @@ export class ClockPickerComponent implements OnInit, AfterViewInit, ControlValue
               if (value === 12) {
                   value = 0;
                   value = inner ? (value === 0 ? 12 : value) : value === 0 ? 0 : value + 12;
+                  console.log('klik');
               }
           } else {
               if (roundBy5) {

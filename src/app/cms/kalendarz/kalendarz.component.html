@@ -9,8 +9,71 @@
         <div class="container">
             <div *ngIf="calendarOptions">
                 <ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail)" (eventDrop)="updateEvent($event.detail)"
-                (eventResize)="updateEvent($event.detail)" (clickButton)="clickButton($event.detail)" (dayClick)="klik($event.detail)"></ng-fullcalendar>
+                (eventResize)="updateEvent($event.detail)" (clickButton)="clickButton($event.detail)" (dayClick)="setDateEvent($event.detail);basicModal.show()"></ng-fullcalendar>
              </div>
         </div>     
+    </div>
+</div>
+
+
+
+
+<div mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+    <div class="modal-dialog modal-full-height modal-top" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">Nowe wydarzenie</h4>
+            </div>
+            <div class="modal-body">
+               <div class="row">
+                   <div class="col-md-6">
+                       <div class="md-form">
+                           <input type="text" class="form-control" [(ngModel)]="dataEvent" disabled>
+                            <label class="active">Data startu wydarzenia:</label>
+                        </div>  
+                   </div>
+                   
+                   <div class="col-md-6">
+                       <div class="md-form">
+                           <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dataEndEvent" class="my-date-picker"></my-date-picker>
+                            <label class="active">Data końca wydarzenia:</label>
+                        </div>  
+                   </div>
+               </div>
+                 
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <mdb-time-picker [buttonLabel]="'Gotowe'" [twelvehour]="false" [darktheme]="true" [placeholder]="'Wybierz godzinę startu'" [(ngModel)]="timeStartEvent"></mdb-time-picker>
+                            <label class="active">Godzina startu wydarzenia:</label>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <mdb-time-picker [buttonLabel]="'Done'" [twelvehour]="false" [darktheme]="true" [placeholder]="'Wybierz godzinę końca'" [(ngModel)]="timeEndEvent" ></mdb-time-picker>
+                            <label class="active">Godzina końca wydarzenia:</label>
+                        </div>
+                    </div>
+                </div>                          
+                
+                <div class="row">
+                    <div class="col-md-12">
+                       <div class="md-form">
+                           <input type="text" class="form-control" [(ngModel)]="nameEvent">
+                            <label class="active">Nazwa wydarzenia:</label>
+                       </div>                        
+                    </div>
+                </div>
+                <button (click)="test()">test</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary waves-effect" aria-label="Close" (click)="basicModal.hide()" mdbRippleRadius>Zamknij</button>
+                <button type="button" class="btn btn-outline-success waves-effect" mdbRippleRadius>Zapisz</button>
+            </div>
+        </div>
     </div>
 </div>
