@@ -21,7 +21,6 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { Ng2PaginationModule } from 'ng2-pagination';
 import { MyDatePickerModule } from 'mydatepicker';
 import { FileUploadModule } from 'ng2-file-upload';
-import { CalendarComponent } from "angular2-fullcalendar/src/calendar/calendar";
 
 import { WraperComponent } from './wraper/wraper.component';
 import { DynamicComponentComponent } from './dynamic-component/dynamic-component.component';
