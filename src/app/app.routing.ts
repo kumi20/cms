@@ -32,6 +32,8 @@ import { PodatekComponent } from './cms/podatek/podatek.component';
 import { ZusComponent } from './cms/zus/zus.component';
 import { AddZusComponent } from './cms/add-zus/add-zus.component';
 import { KalendarzComponent } from './cms/kalendarz/kalendarz.component';
+import { WyposazenieComponent } from './cms/wyposazenie/wyposazenie.component';
+import { AddWyposazenieComponent } from './cms/add-wyposazenie/add-wyposazenie.component';
 
 /// ROUTING
 const routesConfig: Routes = [
@@ -72,6 +74,9 @@ const routesConfig: Routes = [
     { path: 'content-38', component: ZusComponent, canActivate: [AuthGuard]},
     { path: 'dodajZus', component:AddZusComponent , canActivate: [AuthGuard]},
     { path: 'content-21', component: KalendarzComponent, canActivate: [AuthGuard]},
+    { path: 'content-39', component: WyposazenieComponent, canActivate: [AuthGuard]},
+    { path: 'dodajWyposazenie', component: AddWyposazenieComponent, canActivate: [AuthGuard]},
+    { path: 'dodajWyposazenie/:id', component: AddWyposazenieComponent, canActivate: [AuthGuard]},
     { path: 'test', component: KontenerComponent },
     { path: '**', component: BrakStronyComponent},
     

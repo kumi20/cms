@@ -55,6 +55,8 @@ import { AddZusComponent } from './add-zus/add-zus.component';
 import { KalendarzComponent } from './kalendarz/kalendarz.component';
 
 import { FullCalendarModule } from 'ng-fullcalendar';
+import { WyposazenieComponent } from './wyposazenie/wyposazenie.component';
+import { AddWyposazenieComponent } from './add-wyposazenie/add-wyposazenie.component';
 
 @NgModule({
   imports: [
@@ -106,7 +108,9 @@ import { FullCalendarModule } from 'ng-fullcalendar';
     PodatekComponent,
     ZusComponent,
     AddZusComponent,
-    KalendarzComponent
+    KalendarzComponent,
+    WyposazenieComponent,
+    AddWyposazenieComponent
   ],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]
