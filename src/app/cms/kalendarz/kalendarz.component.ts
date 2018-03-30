@@ -5,6 +5,7 @@ import { EventService } from '../../event.service';
 import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
 import { IMyDpOptions } from 'mydatepicker'; 
+import { kalendarz } from './kalendarz';
 
 @Component({
   selector: 'app-kalendarz',
@@ -13,13 +14,16 @@ import { IMyDpOptions } from 'mydatepicker';
 })
 export class KalendarzComponent implements OnInit {
 
+  @ViewChild('basicModal') basicModal;
+  @ViewChild('fullcalendar') fullcalendar;
+    
   calendarOptions: Options;
   events;
   dataEvent;
   timeStartEvent: string = '00:00';
   timeEndEvent: string = '00:00';   
   dataEndEvent;
-  nameEvent;
+  kalendarzEvent: kalendarz = new kalendarz();    
     
   public myDatePickerOptions: IMyDpOptions = {
     // other options...
@@ -77,7 +81,6 @@ export class KalendarzComponent implements OnInit {
       this.CmsService.get(`callendar/getList.php`).subscribe(
         response =>{
             this.events = response;
-            
             this.calendarOptions = {
                 editable: true,
                 eventLimit: false,
@@ -106,10 +109,32 @@ export class KalendarzComponent implements OnInit {
             this.event.klepsydraStop();
         }  
       )
+      
   } 
     
-    test(){
-        console.log('czas startu', this.timeStartEvent);
+    save(){
+        if(this.dataEndEvent==null) this.event.wyswietlInfo('error','podaj datę końca wydarzenia');
+        else{
+            this.kalendarzEvent.start = this.dataEvent + ' '+this.timeStartEvent;
+            this.kalendarzEvent.endEvent = this.dataEndEvent.formatted + ' '+this.timeEndEvent; 
+            this.event.klepsydraStart();
+            this.CmsService.post(`callendar/postEvent.php`, this.kalendarzEvent).subscribe(
+                response =>{
+                    this.event.wyswietlInfo('success','dodano wydarzenie');
+                    this.event.klepsydraStop();
+                    this.fullcalendar.fullCalendar('renderEvent', this.kalendarzEvent);
+                    this.fullcalendar.fullCalendar('rerenderEvents');
+                    this.basicModal.hide();                    
+                },
+                error =>{
+                    this.event.wyswietlInfo('error', 'Błąd zapisu danych');
+                    this.event.klepsydraStop();
+                }
+            )
+        }
+        
+       
+        
     }
 
 }

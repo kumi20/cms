@@ -42,7 +42,7 @@ export class ClockPickerComponent implements OnInit, AfterViewInit, ControlValue
 
   hoursTicks: any = [];
   minutesTicks: any = [];
-  selectedHours: any = {'h': '12', 'm': '00', 'ampm': 'AM'};
+  selectedHours: any = {'h': '00', 'm': '00', 'ampm': 'AM'};
   endHours = '';
 
 
@@ -293,18 +293,18 @@ export class ClockPickerComponent implements OnInit, AfterViewInit, ControlValue
           }
       } else {
           if (isHours) {
-              if (value === 12) {
-                  value = 0;
-                  value = inner ? (value === 0 ? 12 : value) : value === 0 ? 0 : value + 12;
-                  console.log('klik');
-              }
+              value = !inner? value + 12 : value;
+              value = value === 24 ? 0 : value;
+              value = (inner && value === 0) ? 12 : value;
+              value = (!inner && value === 12) ? 0 : value;
+
           } else {
               if (roundBy5) {
                   value *= 5;
               }
               if (value === 60) {
                   value = 0;
-              }
+              }              
           }
       }
 
