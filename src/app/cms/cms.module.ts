@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import { Router, CanActivate } from '@angular/router';
 
 import { EdytorComponent } from '../edytor/edytor.component';
+import { AgmCoreModule } from '@agm/core';
 
 import { TemplateModule } from '../template/template.module';
 
@@ -56,6 +57,8 @@ import { KalendarzComponent } from './kalendarz/kalendarz.component';
 import { FullCalendarModule } from 'ng-fullcalendar';
 import { WyposazenieComponent } from './wyposazenie/wyposazenie.component';
 import { AddWyposazenieComponent } from './add-wyposazenie/add-wyposazenie.component';
+import { MapyComponent } from './mapy/mapy.component';
+import { AddMapComponent } from './add-map/add-map.component';
 
 @NgModule({
   imports: [
@@ -73,7 +76,12 @@ import { AddWyposazenieComponent } from './add-wyposazenie/add-wyposazenie.compo
     MDBBootstrapModulePro.forRoot(),
     TemplateModule,
     FullCalendarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AgmCoreModule.forRoot({
+      // please get your own API key here:
+      // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
+      apiKey: 'AIzaSyCWGwAYym9aNgPYwihVhdaB-pxnoE03-D4'
+    })  
   ],
   declarations: [
     EdytorComponent,
@@ -109,7 +117,9 @@ import { AddWyposazenieComponent } from './add-wyposazenie/add-wyposazenie.compo
     AddZusComponent,
     KalendarzComponent,
     WyposazenieComponent,
-    AddWyposazenieComponent
+    AddWyposazenieComponent,
+    MapyComponent,
+    AddMapComponent
   ],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]

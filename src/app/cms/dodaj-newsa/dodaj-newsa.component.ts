@@ -195,7 +195,6 @@ zapisz(){
 
         this.CmsService.post('news/addNews.php', json).subscribe(
             response => {
-                console.log(response)
                 this._route.navigateByUrl('/content-5');
                this.event.wyswietlInfo('success', 'Dodano newsa')
             }
