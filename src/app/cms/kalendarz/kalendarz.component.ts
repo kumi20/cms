@@ -121,6 +121,7 @@ export class KalendarzComponent implements OnInit {
             this.CmsService.post(`callendar/postEvent.php`, this.kalendarzEvent).subscribe(
                 response =>{
                     this.event.wyswietlInfo('success','dodano wydarzenie');
+                    this.kalendarzEvent.id = response.id_event;
                     this.event.klepsydraStop();
                     this.fullcalendar.fullCalendar('renderEvent', this.kalendarzEvent);
                     this.fullcalendar.fullCalendar('rerenderEvents');
@@ -135,6 +136,115 @@ export class KalendarzComponent implements OnInit {
         
        
         
+    }
+    
+    
+    eventClick(event){
+         
+        try{
+            this.dataEvent = event.event.start._i.substr(0,10);
+            this.dataEndEvent = {formatted: event.event.end._i.substr(0,10)};
+            this.timeStartEvent = event.event.start._i.substr(11,15);
+            this.timeEndEvent = event.event.end._i.substr(11,15);
+        }
+        catch(e){
+            let dataStart = new Date(event.event.start._i[0],event.event.start._i[1],event.event.start._i[2],event.event.start._i[3],event.event.start._i[4],event.event.start._i[5],event.event.start._i[6]);
+        
+            let dzien = this.event.formatDay(dataStart.getDate());
+            let miesiac = this.event.formatMonth(dataStart.getMonth());
+            let rok = dataStart.getFullYear();
+            let hours = dataStart.getHours();
+            let minutes = dataStart.getMinutes();
+
+            this.dataEvent = rok+'-'+miesiac+'-'+dzien;
+            this.dataEvent = this.dataEvent;
+
+            this.timeStartEvent = hours+":"+minutes;
+            this.kalendarzEvent.start = this.dataEvent + ' '+this.timeStartEvent;
+            let dataEnd = new Date(event.event.end._i[0],event.event.end._i[1],event.event.end._i[2],event.event.end._i[3],event.event.end._i[4],event.event.end._i[5],event.event.end._i[6]);
+            dzien = this.event.formatDay(dataEnd.getDate());
+            miesiac = this.event.formatMonth(dataEnd.getMonth());
+            rok = dataEnd.getFullYear();
+            hours = dataEnd.getHours();
+            minutes = dataEnd.getMinutes();        
+
+            this.dataEvent = rok+'-'+miesiac+'-'+dzien;
+            this.dataEndEvent = {'formatted': this.dataEvent}; 
+            this.timeEndEvent = hours+":"+minutes;
+            this.kalendarzEvent.endEvent = this.dataEndEvent.formatted + ' '+this.timeEndEvent;
+        }
+        this.kalendarzEvent.id = event.event.id;
+        this.kalendarzEvent.title = event.event.title;
+        this.basicModal.show();
+       
+    }
+    
+    updateEvent(event){
+        let dataStart = new Date(event.event.start._i[0],event.event.start._i[1],event.event.start._i[2],event.event.start._i[3],event.event.start._i[4],event.event.start._i[5],event.event.start._i[6]);
+        
+        let dzien = this.event.formatDay(dataStart.getDate());
+        let miesiac = this.event.formatMonth(dataStart.getMonth());
+        let rok = dataStart.getFullYear();
+        let hours = dataStart.getHours();
+        let minutes = dataStart.getMinutes();
+
+        this.dataEvent = rok+'-'+miesiac+'-'+dzien;
+        this.dataEvent = this.dataEvent;
+        
+        this.timeStartEvent = hours+":"+minutes;
+        this.kalendarzEvent.start = this.dataEvent + ' '+this.timeStartEvent;
+        
+        let dataEnd = new Date(event.event.end._i[0],event.event.end._i[1],event.event.end._i[2],event.event.end._i[3],event.event.end._i[4],event.event.end._i[5],event.event.end._i[6]);
+        dzien = this.event.formatDay(dataEnd.getDate());
+        miesiac = this.event.formatMonth(dataEnd.getMonth());
+        rok = dataEnd.getFullYear();
+        hours = dataEnd.getHours();
+        minutes = dataEnd.getMinutes();        
+        
+        this.dataEvent = rok+'-'+miesiac+'-'+dzien;
+        this.dataEndEvent = {'formatted': this.dataEvent}; 
+        this.timeEndEvent = hours+":"+minutes;
+        this.kalendarzEvent.endEvent = this.dataEndEvent.formatted + ' '+this.timeEndEvent;
+        
+        this.kalendarzEvent.id = event.event.id;
+        this.kalendarzEvent.title = event.event.title;
+        
+        this.event.klepsydraStart();
+        this.CmsService.post(`callendar/postEvent.php`, this.kalendarzEvent).subscribe(
+            response =>{
+                this.event.wyswietlInfo('success', 'Zaktualizowano wydarzenie');
+                this.event.klepsydraStop();
+            },
+            error =>{
+                this.event.klepsydraStop();
+                this.event.wyswietlInfo('error','Błąd zapisu danych');
+            }
+        )
+    }
+    
+    delete(){
+        this.event.klepsydraStart();
+        this.CmsService.get(`callendar/deleteEvent.php?id=${this.kalendarzEvent.id}`).subscribe(
+            response=>{
+                this.event.klepsydraStop();
+                this.event.wyswietlInfo('info', 'Usunięto wydarzenie');
+                this.fullcalendar.fullCalendar('removeEvents',this.kalendarzEvent.id);
+                this.clearEvent();
+            },
+            error =>{
+                this.event.klepsydraStop();
+                this.event.wyswietlInfo('error', 'Błąd zapisu danych');
+            }
+        )
+    }  
+    
+    clearEvent(){
+        this.kalendarzEvent.id = 0;
+        this.kalendarzEvent.endEvent = '';
+        this.kalendarzEvent.start = '';
+        this.kalendarzEvent.title = '';
+        this.timeStartEvent = '';
+        this.timeEndEvent = '';
     }
 
 }

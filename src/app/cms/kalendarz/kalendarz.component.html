@@ -70,7 +70,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary waves-effect" aria-label="Close" (click)="basicModal.hide()" mdbRippleRadius>Zamknij</button>
+                <button type="button" class="btn btn-outline-primary waves-effect" aria-label="Close" (click)="basicModal.hide();clearEvent()" mdbRippleRadius>Zamknij</button>
+                <button class="btn btn-outline-danger waves-effect" (click)="delete();basicModal.hide()" *ngIf="kalendarzEvent.id!=0">Usuń</button>
                 <button type="button" class="btn btn-outline-success waves-effect" mdbRippleRadius (click)="save()">Zapisz</button>
             </div>
         </div>
