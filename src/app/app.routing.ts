@@ -38,7 +38,8 @@ import { MapyComponent } from './cms/mapy/mapy.component';
 import { AddMapComponent } from './cms/add-map/add-map.component';
 import { CformComponent } from './cms/cform/cform.component';
 import { AddCformComponent } from './cms/add-cform/add-cform.component';
- 
+import { PollComponent } from './cms/poll/poll.component';
+import { AddPoolComponent } from './cms/add-pool/add-pool.component' 
 
 /// ROUTING
 const routesConfig: Routes = [
@@ -88,6 +89,9 @@ const routesConfig: Routes = [
     { path: 'content-9', component: CformComponent, canActivate: [AuthGuard]},
     { path: 'addCform', component: AddCformComponent, canActivate: [AuthGuard]},
     { path: 'addCform/:id', component: AddCformComponent, canActivate: [AuthGuard]},
+    { path: 'content-12', component: PollComponent, canActivate: [AuthGuard]},
+    { path: 'addPool', component: AddPoolComponent, canActivate:[AuthGuard]},
+    { path: 'addPool/:id', component: AddPoolComponent, canActivate:[AuthGuard]},
     { path: 'test', component: KontenerComponent },
     { path: '**', component: BrakStronyComponent},
     

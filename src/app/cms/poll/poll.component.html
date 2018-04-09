@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<div class="container">
+     <div class="row card card-cascade narrower">
+            <div  class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+                
+                <a class="white-text mx-3" href="">Sondy</a>
+                <div>
+                    <button class="btn btn-outline-white btn-rounded btn-sm px-2" type="button"  routerLink="/addPool"><i class="fa fa-plus"></i> Dodaj nową sondę</button>
+                </div>
+            </div>
+            <br>
+             
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th style="width:10%">#</th>
+                                    <th  style="width:40%">Nazwa</th>
+                                    <th >Data publikacji</th>
+                                    <th >Data wygaśnięcia</th>
+                                    <th ></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let sonda of pool; let i = index">
+                                    <td>{{i + 1}}</td>
+                                    <td routerLink="/addPool/{{sonda.poll_id}}">{{sonda.poll_name}}</td>
+                                    <td routerLink="/addPool/{{sonda.poll_id}}">{{sonda.poll_startdate}}</td>
+                                    <td routerLink="/addPool/{{sonda.poll_id}}">{{sonda.poll_enddate}}</td>
+                                    <td>
+                                        <i class="fa fa-trash-o" aria-hidden="true" style="cursor:pointer; color:red" (click)="delete(sonda.poll_id)"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

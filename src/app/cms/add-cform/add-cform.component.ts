@@ -146,7 +146,6 @@ export class AddCformComponent implements OnInit {
         this.event.klepsydraStart();
         this.CmsService.get(`cform/getAdresat.php?id=${id}`).subscribe(
             response =>{
-                console.log('response', response);
                 this.adresat.name = response[0].cform_user_name;
                 this.adresat.email = response[0].cform_user_email;
                 this.adresat.stanowisko = response[0].cform_user_title;

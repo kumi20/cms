@@ -61,6 +61,8 @@ import { MapyComponent } from './mapy/mapy.component';
 import { AddMapComponent } from './add-map/add-map.component';
 import { CformComponent } from './cform/cform.component';
 import { AddCformComponent } from './add-cform/add-cform.component';
+import { PollComponent } from './poll/poll.component';
+import { AddPoolComponent } from './add-pool/add-pool.component';
 
 @NgModule({
   imports: [
@@ -123,7 +125,9 @@ import { AddCformComponent } from './add-cform/add-cform.component';
     MapyComponent,
     AddMapComponent,
     CformComponent,
-    AddCformComponent
+    AddCformComponent,
+    PollComponent,
+    AddPoolComponent
   ],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]
