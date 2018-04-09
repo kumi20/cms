@@ -49,7 +49,8 @@
             
             for($j = 0; $j < count($vote); $j++){
              $v = $vote[$j]->pool_vote_name; 
-             $q = "INSERT INTO `cms_poll_vote`(`poll_id`, `poll_vote_name`, `poll_vote_votecount`) VALUES ('$id','$v',0)";
+             $odp = $vote[$j]->poll_vote_votecount;    
+             $q = "INSERT INTO `cms_poll_vote`(`poll_id`, `poll_vote_name`, `poll_vote_votecount`) VALUES ('$id','$v',$odp)";
              $r = mysqli_query($abc, $q); 
             }
         }

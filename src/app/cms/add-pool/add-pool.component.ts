@@ -64,7 +64,7 @@ export class AddPoolComponent implements OnInit {
                     this.countAnswer += Number(el.poll_vote_votecount);
                 })
                 response.forEach(el=>{
-                    this.pool.questions.push({pool_vote_name: el.poll_vote_name, pool_procent: Number(el.poll_vote_votecount/this.countAnswer)*100});
+                    this.pool.questions.push({pool_vote_name: el.poll_vote_name, pool_procent: Number(el.poll_vote_votecount/this.countAnswer)*100, poll_vote_votecount: el.poll_vote_votecount});
                 })
                 
                 console.log('re',  this.pool.questions);
@@ -104,7 +104,7 @@ export class AddPoolComponent implements OnInit {
   }   
     
     addAnswer(){
-        this.pool.questions.push({pool_vote_name: ''});
+        this.pool.questions.push({pool_vote_name: '',pool_procent: 0, poll_vote_votecount: 0});
     }
     
     delete(id){
