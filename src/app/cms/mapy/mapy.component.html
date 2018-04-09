@@ -22,10 +22,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let mapy of mapy; let i = index" routerLink="/dodajMape/{{mapy.map_id}}">
-                            <td>{{i+1}}</td>
-                            <td>{{mapy.map_name}}</td>
-                            <td>
+                        <tr *ngFor="let mapy of mapy; let i = index" >
+                            <td routerLink="/dodajMape/{{mapy.map_id}}">{{i+1}}</td>
+                            <td routerLink="/dodajMape/{{mapy.map_id}}">{{mapy.map_name}}</td>
+                            <td routerLink="/dodajMape/{{mapy.map_id}}">
                                 <div [innerHTML]="mapy.map_content"></div>
                             </td>
                             <td>

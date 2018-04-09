@@ -36,6 +36,8 @@ import { WyposazenieComponent } from './cms/wyposazenie/wyposazenie.component';
 import { AddWyposazenieComponent } from './cms/add-wyposazenie/add-wyposazenie.component';
 import { MapyComponent } from './cms/mapy/mapy.component';
 import { AddMapComponent } from './cms/add-map/add-map.component';
+import { CformComponent } from './cms/cform/cform.component';
+import { AddCformComponent } from './cms/add-cform/add-cform.component';
  
 
 /// ROUTING
@@ -83,6 +85,9 @@ const routesConfig: Routes = [
     { path: 'content-33', component: MapyComponent, canActivate: [AuthGuard]},
     { path: 'dodajMape', component: AddMapComponent, canActivate: [AuthGuard]},
     { path: 'dodajMape/:id', component: AddMapComponent, canActivate: [AuthGuard]},
+    { path: 'content-9', component: CformComponent, canActivate: [AuthGuard]},
+    { path: 'addCform', component: AddCformComponent, canActivate: [AuthGuard]},
+    { path: 'addCform/:id', component: AddCformComponent, canActivate: [AuthGuard]},
     { path: 'test', component: KontenerComponent },
     { path: '**', component: BrakStronyComponent},
     

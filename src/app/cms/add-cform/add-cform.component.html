@@ -1,0 +1,100 @@
+<app-navbar></app-navbar>
+<div class="container">
+     <div class="row card card-cascade narrower">
+            <div  class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+                
+                <a class="white-text mx-3" href="">Nowy formularz kontaktowy</a>
+
+            </div>
+            
+            <br>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Nazwa:</label>
+                        <input type="text" class="form-control" [(ngModel)]="cform.name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Adresaci:</label>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th style="width:10%">#</th>
+                                    <th >Imię i nazwisko</th>
+                                    <th >Email</th>
+                                    <th>Stanowisko</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr *ngFor="let i of cformUser" >
+                                    <td style="width:10%">
+                                        <div class="form-group checkbox-primary-filled">
+                                            <input type="checkbox" id="{{i.cform_user_name}}" [(ngModel)]="i.checked" class="filled-in">
+                                            <label for="{{i.cform_user_name}}"></label>
+                                        </div>                                        
+                                    </td>
+                                    <td (click)="editAdresat(i.cform_user_id)">{{i.cform_user_name}}</td>
+                                    <td (click)="editAdresat(i.cform_user_id)"> {{i.cform_user_email}}</td>
+                                    <td (click)="editAdresat(i.cform_user_id)">{{i.cform_user_title}}</td>
+                                    <td>
+                                        <i class="fa fa-trash-o" aria-hidden="true" style="cursor:pointer; color:red" (click)="delete(i.cform_user_id)"></i>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">    
+                        <a (click)="showAddAdresat()"><i class="fa fa-plus-circle"></i>Dodaj adresata</a>
+                    </div>
+                </div>
+                
+                <div class="row" *ngIf="addresatShow">
+                    <div class="row">
+                       <div class="container">
+                            <div class="col-md-12">
+                                <label>Imię i nazwisko:</label>
+                                <input type="text" class="form-control" [(ngModel)]="adresat.name">
+                            </div> 
+                       </div>                        
+                    </div>
+                    <div class="row">
+                       <div class="container">
+                            <div class="col-md-12">
+                                <label>Email:</label>
+                                <input type="text" class="form-control" [(ngModel)]="adresat.email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                       <div class="container">
+                            <div class="col-md-12">
+                                <label>Stanowisko:</label>
+                                <input type="text" class="form-control" [(ngModel)]="adresat.stanowisko">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <button class="btn btn-outline-primary waves-effect" (click)="cancel()">Anuluj</button>
+                            <button class="btn btn-outline-success waves-effect" (click)="addAdresat()">Dodaj</button>
+                        </div>
+                    </div> 
+                </div>
+                
+                <div class="row" *ngIf="!addresatShow">
+                    <div class="col-lg-12">
+                        <button class="btn btn-outline-primary waves-effect" (click)="back()">Powrót</button>
+                        <button class="btn btn-outline-success waves-effect" (click)="save()">Zapisz</button>
+                    </div>
+                </div> 
+            </div>
+    </div>
+</div>

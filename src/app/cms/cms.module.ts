@@ -59,6 +59,8 @@ import { WyposazenieComponent } from './wyposazenie/wyposazenie.component';
 import { AddWyposazenieComponent } from './add-wyposazenie/add-wyposazenie.component';
 import { MapyComponent } from './mapy/mapy.component';
 import { AddMapComponent } from './add-map/add-map.component';
+import { CformComponent } from './cform/cform.component';
+import { AddCformComponent } from './add-cform/add-cform.component';
 
 @NgModule({
   imports: [
@@ -119,7 +121,9 @@ import { AddMapComponent } from './add-map/add-map.component';
     WyposazenieComponent,
     AddWyposazenieComponent,
     MapyComponent,
-    AddMapComponent
+    AddMapComponent,
+    CformComponent,
+    AddCformComponent
   ],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]

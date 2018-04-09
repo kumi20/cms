@@ -30,7 +30,18 @@ export class MapyComponent implements OnInit {
   }
     
   delete(id){
-      console.log('idDelete',id)
+      this.event.klepsydraStart();
+      this.CmsService.get(`mapy/deleteMapPoint.php?id=${id}`).subscribe(
+        response=>{
+            this.event.klepsydraStop();
+            this.event.wyswietlInfo('info','Usunięto punkt');
+            this.ngOnInit();
+        },
+        error=>{
+            this.event.klepsydraStop();
+            this.event.wyswietlInfo('error','Błąd zapisu danych');
+        }
+      )
   }    
 
 }

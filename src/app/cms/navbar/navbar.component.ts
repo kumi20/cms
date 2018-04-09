@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
       this.userName = localStorage.getItem('user_nameCms');
       let uri = 'getMenu.php';
       this.CmsService.get(uri).subscribe(
-          response => {console.log(response); this.menu = response}
+          response => {this.menu = response}
       )
   }
 
@@ -29,7 +29,6 @@ export class NavbarComponent implements OnInit {
   }
 
   closeMenu(id){
-      console.log('menuId',id)
       document.getElementById('closeMenu').click();
   }
 }
