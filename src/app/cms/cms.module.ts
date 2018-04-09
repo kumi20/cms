@@ -63,6 +63,7 @@ import { CformComponent } from './cform/cform.component';
 import { AddCformComponent } from './add-cform/add-cform.component';
 import { PollComponent } from './poll/poll.component';
 import { AddPoolComponent } from './add-pool/add-pool.component';
+import { ConfigComponent } from './config/config.component';
 
 @NgModule({
   imports: [
@@ -127,7 +128,8 @@ import { AddPoolComponent } from './add-pool/add-pool.component';
     CformComponent,
     AddCformComponent,
     PollComponent,
-    AddPoolComponent
+    AddPoolComponent,
+    ConfigComponent
   ],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]
