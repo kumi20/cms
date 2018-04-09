@@ -56,7 +56,6 @@ export class AddPoolComponent implements OnInit {
           this.CmsService.get(`pool/getPool.php?id=${this.id}`).subscribe(
             response=>{
                 this.event.klepsydraStop();
-                console.log('re', response);
                 this.pool.name = response[0].poll_name;
                 this.pool.stardate = {formatted: response[0].poll_startdate};
                 this.pool.enddate = {formatted: response[0].poll_enddate};
@@ -66,8 +65,6 @@ export class AddPoolComponent implements OnInit {
                 response.forEach(el=>{
                     this.pool.questions.push({pool_vote_name: el.poll_vote_name, pool_procent: Number(el.poll_vote_votecount/this.countAnswer)*100, poll_vote_votecount: el.poll_vote_votecount});
                 })
-                
-                console.log('re',  this.pool.questions);
             },
             error =>{
                 this.event.klepsydraStop();
