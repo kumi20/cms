@@ -11,6 +11,7 @@ import { Router, CanActivate } from '@angular/router';
 import { CmsService } from '../cms.service';
 import { EventService } from '../event.service';
 import { AuthGuard } from '../auth.guard';
+import { AgmCoreModule } from '@agm/core';
 
 import { CKEditorModule } from 'ng2-ckeditor';
 import { Ng2PaginationModule } from 'ng2-pagination';
@@ -18,6 +19,9 @@ import { MyDatePickerModule } from 'mydatepicker';
 import { FileUploadModule } from 'ng2-file-upload';
 import { StaticComponent } from './static/static.component';
 import { NewsComponentView } from './news/news.component';
+import { MenuParent } from './menu/menu/menu.component';
+import { ChildMenuComponent } from './menu/child-menu/child-menu.component';
+import { MapyComponent } from './mapy/mapy.component';
 
 @NgModule({
   imports: [
@@ -32,9 +36,14 @@ import { NewsComponentView } from './news/news.component';
     ReactiveFormsModule,
     MyDatePickerModule,
     MDBBootstrapModule.forRoot(),
-    MDBBootstrapModulePro.forRoot()
+    MDBBootstrapModulePro.forRoot(),
+    AgmCoreModule.forRoot({
+      // please get your own API key here:
+      // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
+      apiKey: 'AIzaSyCWGwAYym9aNgPYwihVhdaB-pxnoE03-D4'
+    })  
   ],
-  declarations: [StaticComponent, NewsComponentView],
+  declarations: [StaticComponent, NewsComponentView, MenuParent, ChildMenuComponent, MapyComponent],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]
 })

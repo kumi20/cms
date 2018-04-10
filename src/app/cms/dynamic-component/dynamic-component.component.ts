@@ -4,13 +4,17 @@ import { EdytorComponent } from '../../edytor/edytor.component';
 import { TrescComponent } from '../tresc/tresc.component';
 import { StaticComponent } from '../../template/static/static.component';
 import { NewsComponentView } from '../../template/news/news.component';
+import { MenuParent } from '../../template/menu/menu/menu.component';
+import { MapyComponent } from '../../template/mapy/mapy.component';
 
 @Component({
   selector: 'app-dynamic-component',
   entryComponents:[
     EdytorComponent,
     StaticComponent,
-    NewsComponentView
+    NewsComponentView,
+    MenuParent,
+    MapyComponent
   ],
   templateUrl: './dynamic-component.component.html',
   styleUrls: ['./dynamic-component.component.scss'],

@@ -98,7 +98,7 @@ export class StronaComponent implements OnInit, OnChanges{
               this.widok.select(this.widokElement[0].value);
           }
       )
-
+      console.log('event', event.value)
       switch(event.value){
           case '24':  let uri = 'static/getTresc.php'; 
                       this.CmsService.get(uri).subscribe(
@@ -120,9 +120,30 @@ export class StronaComponent implements OnInit, OnChanges{
                                 });
                                 this.trescElement = pom;
                             }
+                      );
+                      break;    
+          case '2':   this.CmsService.get(`menu/getMenu.php`).subscribe(
+                            response=>{
+                                let pom = new Array;
+                                response.forEach(element => {
+                                    pom.push({value: element.menu_id, label:element.menu_name})
+                                });
+                                this.trescElement = pom;
+                            }  
                       )
                       break;
+          case '33':  this.CmsService.get(`mapy/getListGroup.php`).subscribe(
+                            response=>{
+                                let pom = new Array;
+                                response.forEach(element => {
+                                    pom.push({value: element.map_group_id, label:element.map_group_name})
+                                });
+                                this.trescElement = pom;
+                            }  
+                        );
+                      break;
       }
+      
   }
 
   deleteKontener(id){

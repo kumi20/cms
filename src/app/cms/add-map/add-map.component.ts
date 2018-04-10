@@ -37,7 +37,6 @@ export class AddMapComponent implements OnInit {
   }
     
   mapClicked(event: MouseEvent) {
-      console.log("event", event)
       if(this.markerList.length>0){
           this.event.wyswietlInfo('info','Można dodać tylko 1 punkt');
       }
