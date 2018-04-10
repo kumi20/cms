@@ -1,0 +1,80 @@
+<!--Section: Contact v.2-->
+<section class="section">
+
+    <!--Section heading-->
+    <h2 class="section-heading h1 pt-4">Kontakt</h2>
+   
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-8 col-xl-9">
+            <form (ngSubmit)="send(cform.value)" [formGroup]="cform">
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <div class="md-form">
+                                <input mdbActive type="text" id="contact-name" class="form-control" formControlName="name">
+                                <label for="contact-name" class="">Imię</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <div class="md-form">
+                                <input mdbActive type="text" id="contact-email" class="form-control" formControlName="email">
+                                <label for="contact-email" class="">Email</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form">
+                            <input mdbActive type="text" id="contact-Subject" class="form-control" formControlName="subject">
+                            <label for="contact-Subject" class="">Temat</label>
+                        </div>
+                    </div>
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-12">
+
+                        <div class="md-form">
+                            <textarea mdbActive type="text" id="contact-message" class="md-textarea" formControlName="message"></textarea>
+                            <label for="contact-message">Wiadomość</label>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Grid row-->
+                <div class="center-on-small-only">
+                    <button class="btn btn-primary waves-light" mdbRippleRadius type="submit">Wyślij</button>
+                </div>
+            </form>
+
+            
+        </div>
+        <!--Grid column-->
+
+       
+
+    </div>
+
+</section> 
+<!--Section: Contact v.2-->
