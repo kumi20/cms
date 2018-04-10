@@ -39,5 +39,8 @@ header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Dispo
         );
     }
 
+    $q = "DELETE FROM `cms_page_element` WHERE `module_id`=0";
+    $r = mysqli_query($abc, $q);
+
     echo $json_response = json_encode($arr); 
 ?>

@@ -22,6 +22,7 @@ import { NewsComponentView } from './news/news.component';
 import { MenuParent } from './menu/menu/menu.component';
 import { ChildMenuComponent } from './menu/child-menu/child-menu.component';
 import { MapyComponent } from './mapy/mapy.component';
+import { CformTemplateComponent } from './cform/cform.component';
 
 @NgModule({
   imports: [
@@ -43,7 +44,7 @@ import { MapyComponent } from './mapy/mapy.component';
       apiKey: 'AIzaSyCWGwAYym9aNgPYwihVhdaB-pxnoE03-D4'
     })  
   ],
-  declarations: [StaticComponent, NewsComponentView, MenuParent, ChildMenuComponent, MapyComponent],
+  declarations: [StaticComponent, NewsComponentView, MenuParent, ChildMenuComponent, MapyComponent, CformTemplateComponent],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]
 })

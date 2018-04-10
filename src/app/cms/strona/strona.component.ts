@@ -142,6 +142,16 @@ export class StronaComponent implements OnInit, OnChanges{
                             }  
                         );
                       break;
+          case '9':     this.CmsService.get(`cform/getList.php`).subscribe(
+                            response=>{
+                                let pom = new Array;
+                                response.forEach(element => {
+                                    pom.push({value: element.cform_id, label:element.cform_name})
+                                });
+                                this.trescElement = pom;
+                            }  
+                        );
+                        break;
       }
       
   }

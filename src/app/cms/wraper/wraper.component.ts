@@ -11,6 +11,7 @@ import { BrakStronyComponent } from '../../brak-strony/brak-strony.component';
 import { NewsComponentView } from '../../template/news/news.component';
 import { MenuParent } from '../../template/menu/menu/menu.component';
 import { MapyComponent } from '../../template/mapy/mapy.component';
+import { CformTemplateComponent } from '../../template/cform/cform.component';
 
 import { StronaComponent } from '../strona/strona.component';
 import { location } from 'angular-bootstrap-md/utils/facade/browser';
@@ -72,7 +73,8 @@ export class WraperComponent implements OnInit {
               case '12': k = StaticComponent; break;
               case '1': k = NewsComponentView; break;
               case '6': k = MenuParent; break; 
-              case '33': k = MapyComponent; break;      
+              case '33': k = MapyComponent; break;  
+              case '11': k = CformTemplateComponent; break; 
               default: k = BrakStronyComponent; break;
           }
 

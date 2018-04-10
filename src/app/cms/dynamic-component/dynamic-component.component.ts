@@ -6,6 +6,8 @@ import { StaticComponent } from '../../template/static/static.component';
 import { NewsComponentView } from '../../template/news/news.component';
 import { MenuParent } from '../../template/menu/menu/menu.component';
 import { MapyComponent } from '../../template/mapy/mapy.component';
+import { CformTemplateComponent } from '../../template/cform/cform.component';
+
 
 @Component({
   selector: 'app-dynamic-component',
@@ -14,7 +16,8 @@ import { MapyComponent } from '../../template/mapy/mapy.component';
     StaticComponent,
     NewsComponentView,
     MenuParent,
-    MapyComponent
+    MapyComponent,
+    CformTemplateComponent
   ],
   templateUrl: './dynamic-component.component.html',
   styleUrls: ['./dynamic-component.component.scss'],
