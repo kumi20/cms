@@ -17,24 +17,20 @@
         $data = json_decode(file_get_contents("php://input"));
         $id = $_GET['id'];
         
-        $q = "DELETE FROM `cms_cform` WHERE `cform_id`='$id'";
-
-        $r = mysqli_query($abc, $q);
-        
-        $q = "DELETE FROM `cms_cform_user_conn` WHERE `cform_id`='$id'";
+        $q = "DELETE FROM `cms_nletter` WHERE `nletter_id`='$id'";
 
         $r = mysqli_query($abc, $q);
         
         if($r){
                     $arr = array(
                         'kod'=> 0,
-                        'opis'=> 'Usunięto formularz'
+                        'opis'=> 'Usunięto newsletter'
                       );
                 }
                 else{
                     $arr = array(
                         'kod'=> -1,
-                        'opis'=> 'Błąd usuwania formularza'
+                        'opis'=> 'Błąd usuwania newslettera'
                     );
                 }
        

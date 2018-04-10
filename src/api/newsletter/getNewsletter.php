@@ -14,34 +14,20 @@
         $idUser = JWT::decode($idUser, $secret_key);
         $idUser = base64_decode($idUser->userId);
         
-        $data = json_decode(file_get_contents("php://input"));
         $id = $_GET['id'];
-        
-        $q = "DELETE FROM `cms_cform` WHERE `cform_id`='$id'";
+	
+        $q = "SELECT * FROM `cms_nletter` WHERE `nletter_id`='$id'";
 
         $r = mysqli_query($abc, $q);
-        
-        $q = "DELETE FROM `cms_cform_user_conn` WHERE `cform_id`='$id'";
 
-        $r = mysqli_query($abc, $q);
+        $arr = array();
+
+        while ($row = mysqli_fetch_assoc($r)){
+            $arr[] = $row;
+        }
         
-        if($r){
-                    $arr = array(
-                        'kod'=> 0,
-                        'opis'=> 'Usunięto formularz'
-                      );
-                }
-                else{
-                    $arr = array(
-                        'kod'=> -1,
-                        'opis'=> 'Błąd usuwania formularza'
-                    );
-                }
-       
     }
-        
-        
 
-        echo $json_response = json_encode($arr); 
+    echo $json_response = json_encode($arr); 
 
 ?>

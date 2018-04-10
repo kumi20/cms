@@ -26,5 +26,20 @@ export class MenuComponent implements OnInit {
           error => this.event.klepsydraStop()
       )
   }
+    
+delete(id){
+    this.event.klepsydraStart();
+    this.CmsService.get(`menu/deletemenu.php?id=${id}`).subscribe(
+        response=>{
+            this.event.klepsydraStop();
+            this.event.wyswietlInfo('info','Usunięto menu');
+            this.ngOnInit();
+        },
+        error =>{
+            this.event.klepsydraStop();
+            this.event.wyswietlInfo('error','Błąd zapisu danych');
+        }
+    )
+}
 
 }

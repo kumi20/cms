@@ -64,6 +64,8 @@ import { AddCformComponent } from './add-cform/add-cform.component';
 import { PollComponent } from './poll/poll.component';
 import { AddPoolComponent } from './add-pool/add-pool.component';
 import { ConfigComponent } from './config/config.component';
+import { NewsletterComponent } from './newsletter/newsletter.component';
+import { AddNewsletterComponent } from './add-newsletter/add-newsletter.component';
 
 @NgModule({
   imports: [
@@ -129,7 +131,9 @@ import { ConfigComponent } from './config/config.component';
     AddCformComponent,
     PollComponent,
     AddPoolComponent,
-    ConfigComponent
+    ConfigComponent,
+    NewsletterComponent,
+    AddNewsletterComponent
   ],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]

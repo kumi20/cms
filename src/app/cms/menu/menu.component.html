@@ -15,6 +15,7 @@
             <table class="table table-hover">
                 <tr *ngFor="let i of menuLista">
                     <td><a routerLink="/content-2/{{i.menu_id}}">{{i.menu_name}}</a></td>
+                    <td><i class="fa fa-trash-o" aria-hidden="true" style="cursor:pointer; color:red" data-toggle="modal" data-target="#centralModalDanger" (click)="delete(i.menu_id)"></i></td>
                 </tr>
             </table>
         </div>

@@ -52,8 +52,7 @@
             }
             
         }
-        
-        $r = mysqli_query ($abc, $q);           
+           
         if($r){
             $arr = array(
                 'kod'=> 0,

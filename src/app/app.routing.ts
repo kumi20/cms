@@ -41,6 +41,8 @@ import { AddCformComponent } from './cms/add-cform/add-cform.component';
 import { PollComponent } from './cms/poll/poll.component';
 import { AddPoolComponent } from './cms/add-pool/add-pool.component';
 import { ConfigComponent } from './cms/config/config.component';
+import { NewsletterComponent } from './cms/newsletter/newsletter.component';
+import { AddNewsletterComponent } from './cms/add-newsletter/add-newsletter.component';
 
 /// ROUTING
 const routesConfig: Routes = [
@@ -94,6 +96,9 @@ const routesConfig: Routes = [
     { path: 'addPool', component: AddPoolComponent, canActivate:[AuthGuard]},
     { path: 'addPool/:id', component: AddPoolComponent, canActivate:[AuthGuard]},
     { path: 'content-25', component: ConfigComponent, canActivate:[AuthGuard]},
+    { path: 'content-13', component: NewsletterComponent, canActivate:[AuthGuard]},
+    { path: 'addNletter', component: AddNewsletterComponent, canActivate:[AuthGuard]},
+    { path: 'addNletter/:id', component: AddNewsletterComponent, canActivate:[AuthGuard]},
     { path: 'test', component: KontenerComponent },
     { path: '**', component: BrakStronyComponent},
     

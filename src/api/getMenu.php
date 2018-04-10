@@ -7,7 +7,7 @@ header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description, Accept, AuthorizationToken');
 
 
-    $q = "SELECT `module_id`,`module_full_name` FROM `cms_module`";
+    $q = "SELECT `module_id`,`module_full_name` FROM `cms_module` ORDER BY module_order";
 
     $r = mysqli_query($abc, $q);
     
