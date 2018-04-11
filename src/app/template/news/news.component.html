@@ -1,10 +1,117 @@
+<br><br>
+<ng-template [ngIf]="!readArticle">
+    <!--Section: Magazine v.1-->
+    <section class="section magazine-section">
 
+        <!--Grid row-->
+        <div class="row text-left" >
 
-<!--Accordion wrapper-->
-<mdb-squeezebox [multiple]="false" aria-multiselectable="true">
-        <mdb-item  *ngFor="let news of newsList">
-            <mdb-item-head>  {{news.news_name}} </mdb-item-head>
-            <mdb-item-body> {{news.news_content}}</mdb-item-body>
-        </mdb-item>
-</mdb-squeezebox>
-    <!--/.Accordion wrapper-->
+            <!--Grid column-->
+            <div class="col-md-12" >
+
+                <!--Featured news-->
+                <div class="single-news" *ngFor="let i of firstNews">
+
+                    <!--Image-->
+                    <div mdbRippleRadius class="view overlay hm-white-slight waves-light">
+                        <img src="{{i.news_lead_img}}" alt="Sample post image"  *ngIf="i.news_lead_img!=''">
+                        <a (click)="showArticle(i.news_id)">
+                            <div class="mask"></div>
+                        </a>
+                    </div>
+
+                    <!--Excerpt-->
+                    <div class="news-data">
+                        <a class="light-blue-text"><h6><strong>{{newsGroupName}}</strong></h6></a>
+                        <p><strong><i class="fa fa-clock-o"></i> {{i.news_pub_date}}</strong></p>
+                    </div>
+                    <h3><a (click)="showArticle(i.news_id)"><strong>{{i.news_name}}</strong></a></h3>
+                    <div [innerHtml]="i.news_lead"></div>
+
+                </div>
+                <!--/Featured news-->
+
+                <!--Small news-->
+                <div class="single-news" *ngFor="let i of newsList| paginate: { itemsPerPage: 5, currentPage:  page }">
+
+                    <div class="row">
+                        <div class="col-md-3" *ngIf="i.news_lead_img!=''">
+
+                            <!--Image-->
+                            <div mdbRippleRadius class="view overlay hm-white-slight waves-light">
+                                <img src="{{i.news_lead_img}}" alt="Minor sample post image">
+                                <a (click)="showArticle(i.news_id)">
+                                    <div class="mask"></div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--Excerpt-->
+                        <div class="col-md-9">
+                            <p><strong>{{i.news_pub_date}}</strong></p>
+                            <a (click)="showArticle(i.news_id)">{{i.news_name}} 
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+
+                    </div>                                     
+                </div>
+                <pagination-controls (pageChange)="page = pageChanged($event)"  directionLinks="true"  previousLabel="Poprzednia" nextLabel="Następna" autoHide="true" class="pagination" style="widtH:50%; margin: auto;"> </pagination-controls>
+                <!--/Small news-->
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+
+    </section>
+    <!--/Section: Magazine v.1-->
+
+</ng-template>  
+            
+<ng-template [ngIf]="readArticle">
+    <section class="section magazine-section">
+        <!--Small news-->
+                <div class="single-news">
+                    <h4>{{news.news_name}}</h4>
+                    <br><br>    
+                    <div class="row">
+                        <div class="col-md-3" *ngIf="news.news_lead_img!=''">
+                            
+                            <!--Image-->
+                            <div mdbRippleRadius class="view overlay hm-white-slight waves-light">
+                                <img src="{{news.news_lead_img}}" alt="Minor sample post image">
+                            </div>
+                        </div>
+
+                        <!--Excerpt-->
+                        <div class="col-md-9">
+                            <p><strong>{{news.news_pub_date}}</strong></p>
+                            <div [innerHTML]="news.news_lead"></div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                           <div [innerHTML]="news.news_content"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--/Small news-->
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Liczba wyświetleń: {{news.news_views}}</p>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-outline-primary waves-effect" (click)="back()">Powrót</button>
+                    </div>
+                </div>
+    </section>        
+</ng-template>             
+               
+
+            

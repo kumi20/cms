@@ -11,6 +11,7 @@ import 'hammerjs';
   selector: 'mdb-image-modal',
   animations: [zoomState, restartState] ,
   templateUrl: 'image-popup.html',
+  inputs: ['disabledDeleteImage']    
   // host: {
   //   '(document:keyup)': 'keyboardControl($event)'
   // },
@@ -24,7 +25,7 @@ export class ImageModalComponent implements OnInit {
   public loading= false;
   public showRepeat= false;
   public isMobile = false;
-
+  public disabledDeleteImage;    
   public openModalWindow: any;
 
   zoomed = 'inactive';
@@ -62,6 +63,8 @@ export class ImageModalComponent implements OnInit {
   }
 
   ngOnInit() {
+      
+    if(this.disabledDeleteImage == null) this.disabledDeleteImage = false;
     this.loading = true;
     if (this.imagePointer >= 0) {
     this.showRepeat = false;

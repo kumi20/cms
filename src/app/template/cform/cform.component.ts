@@ -31,7 +31,7 @@ export class CformTemplateComponent implements OnInit {
         if (event.email == '' || event.message == '') this.event.wyswietlInfo('info','Proszę podać email i treśc wiadomości');
         else{
             this.event.klepsydraStart();
-            this.CmsService.post(`template/cform/sendMail.php?id=${this.idtresci}`, event).subscribe(
+            this.CmsService.postTemplate(`template/cform/sendMail.php?id=${this.idtresci}`, event).subscribe(
                 response=>{
                     this.event.wyswietlInfo('success', 'Wiadomość została wysłana');
                     this.cform.controls['name'].setValue("");

@@ -1,0 +1,22 @@
+<div class="container">
+   <div class="row">
+        <div class="col-md-12">        
+            <div class="md-form">
+                <input mdbActive type="text" class="form-control" [(ngModel)]="email">
+                <label>E-mail:</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-outline-success waves-effect" (click)="save()">Zapisz</button>
+        </div>
+    </div>
+    
+    <div class="row" *ngIf="infoVisible">
+        <div class="alert alert-info" style="width:350px; margin:0 auto">
+            <strong>Info!</strong> {{info}}
+        </div>
+    </div>
+    
+</div>

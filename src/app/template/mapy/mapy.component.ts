@@ -21,7 +21,7 @@ export class MapyComponent implements OnInit {
 
   ngOnInit() {
       this.event.klepsydraStart();
-      this.CmsService.get(`template/mapy/getList.php?id=${this.idtresci}`).subscribe(
+      this.CmsService.getTemplate(`template/mapy/getList.php?id=${this.idtresci}`).subscribe(
         response=>{
             
             if (response != null){

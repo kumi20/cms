@@ -80,6 +80,19 @@ test(){
         reponse => reponse.json()
     )
 }
+
+    getTemplate(uri){
+        return this._http.get(this.uri+uri).map(
+            response => response.json()
+        )
+    }
+    
+    postTemplate(uri, json){
+        return this._http.post(this.uri+uri,json).map(
+            response => response.json()
+        )
+    }
+    
 }
 
 

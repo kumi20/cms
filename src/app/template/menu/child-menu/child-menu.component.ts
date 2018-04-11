@@ -20,7 +20,7 @@ export class ChildMenuComponent implements OnInit {
 
   ngOnInit() {
       this.event.klepsydraStart();
-      this.CmsService.get(`template/menu/getParent.php?id=${this.idtresci}&node=${this.level}&parent=${this.parent}`).subscribe(
+      this.CmsService.getTemplate(`template/menu/getParent.php?id=${this.idtresci}&node=${this.level}&parent=${this.parent}`).subscribe(
         response =>{
             if(response != null) this.submenu = response;
             this.event.klepsydraStop();

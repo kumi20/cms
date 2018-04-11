@@ -7,16 +7,14 @@ header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description, Accept, AuthorizationToken');
 
 
+    $data = json_decode(file_get_contents("php://input"));
     $id = $_GET['id'];
-
     $today = date("Y-m-d");
 
-    $q = "SELECT cms_news.news_id, cms_news.news_pub_date, cms_news.news_name, cms_news.news_lead, cms_news.news_content, cms_news_group.news_group_name,
-    cms_news.news_lead_img, cms_news_group.news_group_name, cms_news_group.news_group_perpage 
-    FROM `cms_news` 
-    LEFT JOIN cms_news_group_conn ON cms_news.news_id = cms_news_group_conn.news_id 
-    LEFT JOIN cms_news_group ON cms_news_group.news_group_id = cms_news_group_conn.news_group_id 
-    WHERE cms_news_group.news_group_id = '$id' AND cms_news.news_status != '1' AND cms_news.news_pub_date<='$today' ORDER BY cms_news.news_pub_date DESC";
+    $q = "SELECT cms_poll.poll_name, cms_poll_vote.poll_vote_id, cms_poll_vote.poll_vote_name, cms_poll_vote.poll_vote_votecount
+    FROM cms_poll
+    LEFT JOIN cms_poll_vote ON cms_poll_vote.poll_id = cms_poll.poll_id
+    WHERE cms_poll.poll_id = '$id' AND cms_poll.poll_startdate <='$today' AND cms_poll.poll_enddate >='$today'";
 
     $r = mysqli_query($abc, $q);
     

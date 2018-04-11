@@ -22,7 +22,7 @@ export class MenuParent implements OnInit {
 
   ngOnInit() {
       this.event.klepsydraStart();
-      this.CmsService.get(`template/menu/getParent.php?id=${this.idtresci}&node=0&parent=0`).subscribe(
+      this.CmsService.getTemplate(`template/menu/getParent.php?id=${this.idtresci}&node=0&parent=0`).subscribe(
         response =>{
             if(response != null) this.menu = response;
             this.event.klepsydraStop();

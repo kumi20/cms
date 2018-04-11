@@ -1,0 +1,45 @@
+<ng-template [ngIf]="!votePoll">
+     <div class="row">
+    <div class="col-md-12">
+        <div class="container">
+            <h5>{{namePoll}}</h5>
+            
+                <table>
+                    <tr *ngFor="let i of questionPoll">
+                        <td>
+                            <div class="form-group radio-primary-filled">
+                                <input type="radio" id="{{i.poll_vote_id}}" class="filled-in" name="sonda" (click)="choseVoid(i.poll_vote_id)">
+                                <label for="{{i.poll_vote_id}}">{{i.poll_vote_name}}</label>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="questionPoll.length>0">
+        <div class="col-md-12">
+            <div class="container">
+                <button class="btn btn-outline-success waves-effect" (click)="glosuj()">Głosuj</button>
+            </div>
+        </div>
+    </div>   
+</ng-template>
+
+<ng-template [ngIf]="votePoll">
+    <h5>{{namePoll}}</h5>
+    
+    <div style="display: block" *ngIf='chartDatasets.length > 0'>
+        <canvas mdbChart 
+            [chartType]="chartType"
+            [datasets]="chartDatasets" 
+            [labels]="chartLabels"
+            [colors]="chartColors"
+            [options]="chartOptions"
+            [legend]="true"
+            (chartHover)="chartHovered($event)" 
+            (chartClick)="chartClicked($event)"
+            >
+        </canvas>
+    </div>
+</ng-template>

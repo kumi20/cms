@@ -98,7 +98,6 @@ export class StronaComponent implements OnInit, OnChanges{
               this.widok.select(this.widokElement[0].value);
           }
       )
-      console.log('event', event.value)
       switch(event.value){
           case '24':  let uri = 'static/getTresc.php'; 
                       this.CmsService.get(uri).subscribe(
@@ -152,6 +151,32 @@ export class StronaComponent implements OnInit, OnChanges{
                             }  
                         );
                         break;
+            case '12':     this.CmsService.get(`pool/getList.php`).subscribe(
+                            response=>{
+                                let pom = new Array;
+                                response.forEach(element => {
+                                    pom.push({value: element.poll_id, label:element.poll_name})
+                                });
+                                this.trescElement = pom;
+                            }  
+                        );
+                        break;
+            case '6':     this.CmsService.get(`gallery/galerryGet.php`).subscribe(
+                            response=>{
+                                let pom = new Array;
+                                response.forEach(element => {
+                                    pom.push({value: element.gallery_id, label:element.gallery_name})
+                                });
+                                this.trescElement = pom;
+                            }  
+                        );
+                        break;
+            case '13':  this.trescElement = [{value: '1', label:'standard'}];
+                        break;  
+            case '21':  this.trescElement = [{value: '1', label:'standard'}];
+                        break;    
+              
+         
       }
       
   }

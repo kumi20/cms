@@ -7,6 +7,10 @@ import { NewsComponentView } from '../../template/news/news.component';
 import { MenuParent } from '../../template/menu/menu/menu.component';
 import { MapyComponent } from '../../template/mapy/mapy.component';
 import { CformTemplateComponent } from '../../template/cform/cform.component';
+import { PoolComponent } from '../../template/pool/pool.component';
+import { GalleryComponent } from '../../template/gallery/gallery.component';
+import { NewsletterComponent } from '../../template/newsletter/newsletter.component';
+import { CalendarTemplateComponent } from '../../template/calendar/calendar.component';
 
 
 @Component({
@@ -17,7 +21,11 @@ import { CformTemplateComponent } from '../../template/cform/cform.component';
     NewsComponentView,
     MenuParent,
     MapyComponent,
-    CformTemplateComponent
+    CformTemplateComponent,
+    PoolComponent,
+    GalleryComponent,
+    NewsletterComponent,
+    CalendarTemplateComponent
   ],
   templateUrl: './dynamic-component.component.html',
   styleUrls: ['./dynamic-component.component.scss'],

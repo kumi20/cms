@@ -12,6 +12,10 @@ import { NewsComponentView } from '../../template/news/news.component';
 import { MenuParent } from '../../template/menu/menu/menu.component';
 import { MapyComponent } from '../../template/mapy/mapy.component';
 import { CformTemplateComponent } from '../../template/cform/cform.component';
+import { PoolComponent } from '../../template/pool/pool.component';
+import { GalleryComponent } from '../../template/gallery/gallery.component';
+import { NewsletterComponent } from '../../template/newsletter/newsletter.component';
+import { CalendarTemplateComponent } from '../../template/calendar/calendar.component';
 
 import { StronaComponent } from '../strona/strona.component';
 import { location } from 'angular-bootstrap-md/utils/facade/browser';
@@ -75,6 +79,10 @@ export class WraperComponent implements OnInit {
               case '6': k = MenuParent; break; 
               case '33': k = MapyComponent; break;  
               case '11': k = CformTemplateComponent; break; 
+              case '18': k = PoolComponent; break;  
+              case '10': k = GalleryComponent; break;  
+              case '26': k = NewsletterComponent; break; 
+              case '24': k = CalendarTemplateComponent; break;      
               default: k = BrakStronyComponent; break;
           }
 
@@ -83,8 +91,6 @@ export class WraperComponent implements OnInit {
               idTresci: value.page_element_elemid,
               pageElement: value.page_element_id
           };
-            
-          console.log('kontrolki do wyswietlenia', this.kontrolkiDoWyswietlenia)
       }
       
     )

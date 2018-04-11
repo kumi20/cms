@@ -1,7 +1,7 @@
 <div class="ng-gallery mdb-lightbox {{ type }}" *ngIf="showRepeat"> 
   <figure class="col-md-4" *ngFor ="let i of modalImages; let index = index">
     <img src="{{ !i.thumb ? i.img : i.thumb }}" class="ng-thumb" (click)="openGallery(index)" alt="Image {{ index + 1 }}" />
-    <i class="fa fa-trash-o" (click)="delete(i.idPhoto)"></i>
+    <i class="fa fa-trash-o" (click)="delete(i.idPhoto)" *ngIf="!disabledDeleteImage"></i>
   </figure>
 </div>
 <div  tabindex="0" class="ng-overlay" [class.hide_lightbox]="opened == false">

@@ -25,7 +25,7 @@ export class StaticComponent implements OnInit {
     const json = JSON.stringify({
       'id':this.idtresci
     })
-     this.CmsService.post('template/static/getStatic.php', json).subscribe(
+     this.CmsService.postTemplate('template/static/getStatic.php', json).subscribe(
          response => {
            this.tresc = response[0].static_content;
             document.getElementById(this.idModal).innerHTML = this.tresc; 

@@ -12,6 +12,7 @@ import { CmsService } from '../cms.service';
 import { EventService } from '../event.service';
 import { AuthGuard } from '../auth.guard';
 import { AgmCoreModule } from '@agm/core';
+import { FullCalendarModule } from 'ng-fullcalendar';
 
 import { CKEditorModule } from 'ng2-ckeditor';
 import { Ng2PaginationModule } from 'ng2-pagination';
@@ -23,6 +24,10 @@ import { MenuParent } from './menu/menu/menu.component';
 import { ChildMenuComponent } from './menu/child-menu/child-menu.component';
 import { MapyComponent } from './mapy/mapy.component';
 import { CformTemplateComponent } from './cform/cform.component';
+import { PoolComponent } from './pool/pool.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { NewsletterComponent } from './newsletter/newsletter.component';
+import { CalendarTemplateComponent } from './calendar/calendar.component';
 
 @NgModule({
   imports: [
@@ -38,13 +43,14 @@ import { CformTemplateComponent } from './cform/cform.component';
     MyDatePickerModule,
     MDBBootstrapModule.forRoot(),
     MDBBootstrapModulePro.forRoot(),
+    FullCalendarModule,
     AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
       apiKey: 'AIzaSyCWGwAYym9aNgPYwihVhdaB-pxnoE03-D4'
     })  
   ],
-  declarations: [StaticComponent, NewsComponentView, MenuParent, ChildMenuComponent, MapyComponent, CformTemplateComponent],
+  declarations: [StaticComponent, NewsComponentView, MenuParent, ChildMenuComponent, MapyComponent, CformTemplateComponent, PoolComponent, GalleryComponent, NewsletterComponent, CalendarTemplateComponent],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]
 })
