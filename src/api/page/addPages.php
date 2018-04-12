@@ -8,8 +8,8 @@ header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Dispo
 
 
     $data = json_decode(file_get_contents("php://input"));
-    $name = $data->name;
-    $number = $data->number;
+    $name = $data->number;
+    $number = $data->name;
 
     $pageName = $name;
 

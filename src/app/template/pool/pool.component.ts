@@ -18,7 +18,8 @@ export class PoolComponent implements OnInit {
   selectedQuestion: number = 0;
   votePoll: boolean = false; //zmienna sprawdza czy oddano już glos w ankiecie
   dataChart: number[] = []    
-  
+  pollVoteAnswer: any[] = [];
+    
   chartDatasets:Array<any> = [];
 //        {data: [65], label: 'tak'},
 //          {data: [59], label: 'nie'},
@@ -31,8 +32,12 @@ export class PoolComponent implements OnInit {
 
   ngOnInit() {
       //this.chartDatasets.push({data: [65], label: 'tak'})
-      let numberAnkieta = localStorage.getItem('votePoll')
-      if(numberAnkieta == this.idtresci) this.votePoll = true;
+      this.pollVoteAnswer = JSON.parse(localStorage.getItem('votePoll'));
+      if (this.pollVoteAnswer != null){
+          this.pollVoteAnswer.forEach(el=>{
+              if (el == this.idtresci) this.votePoll = true;
+          })
+      }
       this.event.klepsydraStart();
       this.CmsService.getTemplate(`template/poll/getList.php?id=${this.idtresci}`).subscribe(
             response=>{
@@ -65,7 +70,16 @@ export class PoolComponent implements OnInit {
                                 })
                                 
                                 this.event.wyswietlInfo('info','Głos został oddany');
-                                localStorage.setItem('votePoll',this.idtresci);
+                                if (this.pollVoteAnswer == null){
+                                    this.pollVoteAnswer = [];
+                                    this.pollVoteAnswer.push(this.idtresci);
+                                } 
+                                else{
+                                    this.pollVoteAnswer.push(this.idtresci);
+                                }
+                                
+                                let localSotregeAnswer = JSON.stringify(this.pollVoteAnswer);
+                                localStorage.setItem('votePoll',localSotregeAnswer);
                                 this.votePoll = true;
                             },
                             error=>{
@@ -143,5 +157,4 @@ export class PoolComponent implements OnInit {
     public chartHovered(e: any): void {
          
     }
-
 }

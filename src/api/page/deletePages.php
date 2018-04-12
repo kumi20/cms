@@ -27,6 +27,9 @@ header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Dispo
     $q = "DELETE FROM cms_menu_node WHERE page_id = '$id'";
     $r = mysqli_query($abc, $q);  
 
+    $q = "DELETE FROM `cms_page` WHERE `parent_id` = '$id'";
+    $r = mysqli_query($abc, $q); 
+
     $arr = array(
         'kod'=> 0,
         'opis'=> 'Usunięto stronę'

@@ -28,7 +28,6 @@
 
 <ng-template [ngIf]="votePoll">
     <h5>{{namePoll}}</h5>
-    
     <div style="display: block" *ngIf='chartDatasets.length > 0'>
         <canvas mdbChart 
             [chartType]="chartType"
