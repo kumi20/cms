@@ -1,1 +1,164 @@
 <app-navbar></app-navbar> 
+
+<app-stats-card _ngcontent-c4="" _nghost-c5=""><section _ngcontent-c5="" class="mt-lg-5">
+
+    
+    <div _ngcontent-c5="" class="row">
+
+        
+        <div _ngcontent-c5="" class="col-xl-3 col-md-6 mb-r">
+
+            
+            <div _ngcontent-c5="" class="card card-cascade cascading-admin-card">
+
+                
+                <div _ngcontent-c5="" class="admin-up">
+                    <i _ngcontent-c5="" class="fa fa-newspaper-o primary-color"></i>
+                    <div _ngcontent-c5="" class="data">
+                        <p _ngcontent-c5="">News</p>
+                        <h4 _ngcontent-c5=""><strong _ngcontent-c5="">{{news.length}}</strong></h4>
+                    </div>
+                </div>        
+
+            </div>
+            
+
+        </div>
+        
+
+        
+        <div _ngcontent-c5="" class="col-xl-3 col-md-6 mb-r">
+
+            
+            <div _ngcontent-c5="" class="card card-cascade cascading-admin-card">
+
+                
+                <div _ngcontent-c5="" class="admin-up">
+                    <i _ngcontent-c5="" class="fa fa-list warning-color"></i>
+                    <div _ngcontent-c5="" class="data">
+                        <p _ngcontent-c5="">Treści</p>
+                        <h4 _ngcontent-c5=""><strong _ngcontent-c5="">{{static.length}}</strong></h4>
+                    </div>
+                </div>            
+
+            </div>
+            
+
+        </div>
+        
+
+        
+        <div _ngcontent-c5="" class="col-xl-3 col-md-6 mb-r">
+
+            
+            <div _ngcontent-c5="" class="card card-cascade cascading-admin-card">
+
+                
+                <div _ngcontent-c5="" class="admin-up">
+                    <i _ngcontent-c5="" class="fa fa-picture-o light-blue lighten-1"></i>
+                    <div _ngcontent-c5="" class="data">
+                        <p _ngcontent-c5="">Galerie</p>
+                        <h4 _ngcontent-c5=""><strong _ngcontent-c5="">{{gallery.length}}</strong></h4>
+                    </div>
+                </div>
+
+            </div>
+            
+
+        </div>
+        
+
+        
+        <div _ngcontent-c5="" class="col-xl-3 col-md-6 mb-r">
+
+            
+            <div _ngcontent-c5="" class="card card-cascade cascading-admin-card">
+
+                
+                <div _ngcontent-c5="" class="admin-up">
+                    <i _ngcontent-c5="" class="fa fa-bar-chart red accent-2"></i>
+                    <div _ngcontent-c5="" class="data">
+                        <p _ngcontent-c5="">Sondy</p>
+                        <h4 _ngcontent-c5=""><strong _ngcontent-c5="">{{poll.length}}</strong></h4>
+                    </div>
+                </div>
+                
+
+            </div>
+            
+
+        </div>
+        
+
+    </div>
+    
+
+</section></app-stats-card>
+
+
+
+
+<section _ngcontent-c4="" class="mb-5">
+
+    
+    <div _ngcontent-c4="" class="card card-cascade narrower">
+
+        
+        <section _ngcontent-c4="">
+
+            
+            <div _ngcontent-c4="" class="row">
+
+                
+                <div _ngcontent-c4="" class="col mr-0" style="margin-bottom: 50px;">
+
+                    
+                    <div _ngcontent-c4="" class="view gradient-card-header light-blue lighten-1">
+                        <h2 _ngcontent-c4="" class="h2-responsive mb-0">Top 5 news</h2>
+                    </div>
+                    
+
+                    
+                    <div _ngcontent-c4="" class="card-body pb-0">
+                        
+                        <ul class="list-group" *ngFor="let news of fiveTopNews">
+                          <li class="list-group-item">{{news.news_name}}</li>
+                        </ul>
+                    </div>  
+                </div>
+                
+
+                
+                <div _ngcontent-c4="" class="col-xl-7 col-lg-12 mb-r">
+
+                    
+                    <div _ngcontent-c4="" class="view gradient-card-header blue-gradient"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+
+                        <div style="display: block" *ngIf='chartDatasets.length > 0'>
+                            <canvas mdbChart 
+                                [chartType]="chartType"
+                                [datasets]="chartDatasets" 
+                                [labels]="chartLabels"
+                                [colors]="chartColors"
+                                [options]="chartOptions"
+                                [legend]="true"
+                                (chartHover)="chartHovered($event)" 
+                                >
+                            </canvas>
+                        </div>
+                    </div>
+                    
+
+                </div>
+                
+
+            </div>
+            
+
+        </section>
+        
+
+    </div>
+    
+
+</section>

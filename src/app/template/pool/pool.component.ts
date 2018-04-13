@@ -41,12 +41,15 @@ export class PoolComponent implements OnInit {
       this.event.klepsydraStart();
       this.CmsService.getTemplate(`template/poll/getList.php?id=${this.idtresci}`).subscribe(
             response=>{
-                this.namePoll = response[0].poll_name;
-                this.event.klepsydraStop();
-                response.forEach(el=>{
-                    this.questionPoll.push({poll_vote_id: el.poll_vote_id, poll_vote_name: el.poll_vote_name})
-                    this.chartDatasets.push({data: [Number(el.poll_vote_votecount)],label: el.poll_vote_name})
-                })
+                if (response!= null){
+                    this.namePoll = response[0].poll_name;
+                    this.event.klepsydraStop();
+                    response.forEach(el=>{
+                        this.questionPoll.push({poll_vote_id: el.poll_vote_id, poll_vote_name: el.poll_vote_name})
+                        this.chartDatasets.push({data: [Number(el.poll_vote_votecount)],label: el.poll_vote_name})
+                    })
+                }
+                
             },
             error=>{
                 this.event.klepsydraStop();

@@ -1,0 +1,64 @@
+.cascading-admin-card[_ngcontent-c5] {
+    margin-top: 20px;
+}
+.card.card-cascade {
+    width: 100%;
+}
+.card:not([class*=card-outline-]) {
+    border: 0;
+}
+#toast-container>div, #toast-container>mdb-toast-component, .author-box, .badge, .btn, .btn-primary.active:not([disabled]):not(.disabled), .btn-primary:not([disabled]):not(.disabled):active, .card mdb-tabset .card-reveal .active, .card-wrapper .back, .card-wrapper .front, .card-wrapper mdb-tabset .face .active, .card.card-cascade.wider .card-body, .card:not([class*=card-outline-]), .chip, .counter, .dropdown-content, .jumbotron, .md-pills .nav-link.active, .modal-dialog.cascading-modal .modal-c-tabs .nav-tabs, .modal-dialog.modal-notify .modal-header, .navbar, .pagination .active .page-link, .picker__box .picker__header mdb-tabset .picker__select--month.browser-default .active, .picker__box .picker__header mdb-tabset .picker__select--year.browser-default .active, .pricing-card .price .version, .section-blog-fw .view, .show>.btn-primary.dropdown-toggle, .side-nav, .social-list, .testimonial-card mdb-tabset .avatar .active, .z-depth-1, mdb-tabset .card .card-reveal .active, mdb-tabset .card-wrapper .face .active, mdb-tabset .picker__box .picker__header .picker__select--month.browser-default .active, mdb-tabset .picker__box .picker__header .picker__select--year.browser-default .active, mdb-tabset .picker__list-item .active, mdb-tabset .testimonial-card .avatar .active, mdb-tabset .white .active {
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.card {
+    position: relative;
+}
+.card {
+    font-weight: 400;
+    border-radius: .3rem;
+}
+.card {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+}
+*, ::after, ::before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.cascading-admin-card[_ngcontent-c5] .admin-up[_ngcontent-c5] {
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: -20px;
+}
+
+*, ::after, ::before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.cascading-admin-card[_ngcontent-c5] .admin-up[_ngcontent-c5] .fa[_ngcontent-c5] {
+    padding: 1.7rem;
+    font-size: 2rem;
+    color: #fff;
+    text-align: left;
+    margin-right: 1rem;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 2px 9px 0 rgba(0,0,0,.2), 0 2px 13px 0 rgba(0,0,0,.19);
+    box-shadow: 0 2px 9px 0 rgba(0,0,0,.2), 0 2px 13px 0 rgba(0,0,0,.19);
+}
+
+canvas{
+    color:#fff;
+}

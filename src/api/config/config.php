@@ -1,8 +1,8 @@
 <?php
-define('DB_US','kuba');
+define('DB_US',' kumi20_adwokat');
 define('DB_PASS','10kumi62');
 define('DB_HOST','localhost');
-define('DB_NAME','cms');
+define('DB_NAME','kumi20_adwokat');
 
 
 $abc = @mysqli_connect(DB_HOST, DB_US, DB_PASS, DB_NAME);

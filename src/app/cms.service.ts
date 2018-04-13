@@ -7,8 +7,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class CmsService {
 
-  //uri = 'http://127.0.0.1/CMS/src/api/'; //api testowe
-  uri = 'http://kumi20.webd.pl/api/cms/'; //api produkcyjne  
+  uri = 'http://kumi20.webd.pl/apitest/cms/'; //api testowe
+  //uri = 'http://kumi20.webd.pl/api/cms/'; //api produkcyjne  
 
   uriUploudImageGallery = 'http://kumi20.webd.pl/api/cms/gallery/uploudImages.php';
 
