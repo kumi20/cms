@@ -43,6 +43,7 @@ import { AddPoolComponent } from './cms/add-pool/add-pool.component';
 import { ConfigComponent } from './cms/config/config.component';
 import { NewsletterComponent } from './cms/newsletter/newsletter.component';
 import { AddNewsletterComponent } from './cms/add-newsletter/add-newsletter.component';
+import { KpirStatisticComponent } from './cms/kpir-statistic/kpir-statistic.component'
 
 /// ROUTING
 const routesConfig: Routes = [
@@ -99,7 +100,7 @@ const routesConfig: Routes = [
     { path: 'content-13', component: NewsletterComponent, canActivate:[AuthGuard]},
     { path: 'addNletter', component: AddNewsletterComponent, canActivate:[AuthGuard]},
     { path: 'addNletter/:id', component: AddNewsletterComponent, canActivate:[AuthGuard]},
-    { path: 'test', component: KontenerComponent },
+    { path: 'test', component: KpirStatisticComponent },
     { path: '**', component: BrakStronyComponent},
     
   ]

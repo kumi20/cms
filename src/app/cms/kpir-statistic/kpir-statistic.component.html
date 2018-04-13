@@ -1,0 +1,71 @@
+<section _ngcontent-c4="" class="mb-5">
+
+    
+    <div _ngcontent-c4="" class="card card-cascade narrower">
+
+        
+        <section _ngcontent-c4="">
+
+            
+            <div _ngcontent-c4="" class="row">
+
+                
+                <div _ngcontent-c4="" class="col mr-0" style="margin-bottom: 50px;">
+
+                    
+                    <div _ngcontent-c4="" class="view gradient-card-header light-blue lighten-1">
+                        <h2 _ngcontent-c4="" class="h2-responsive mb-0">KPiR</h2>
+                    </div>
+                    
+
+                    
+                    <div _ngcontent-c4="" class="card-body pb-0">
+                        <div class="row">
+                            <div class="col-md-6">
+                                 <div class="md-form">
+                                    <mdb-select class="select" [options]="year" [filterEnabled]="true" placeholder="-- wybierz rok --" [(ngModel)]="actualYear" (selected)="changeYear($event)"></mdb-select>
+                                    <label class="active">Rok:</label>
+                                 </div>
+                             </div>
+                        </div>
+                        <p style="margin-left:30px;">Przychód: {{yearStatistic.przychod_rok}} zł</p>
+                        <p style="margin-left:30px;">Koszt uzyskania przychodu: {{yearStatistic.wydatki_rok}} zł</p>
+                        <p style="margin-left:30px; font-weight:bold; color: red">Dochód: {{yearStatistic.dochod_rok}} zł</p>
+                    </div>  
+                </div>
+                
+
+                
+                <div _ngcontent-c4="" class="col-xl-7 col-lg-12 mb-r">
+
+                    
+                    <div _ngcontent-c4="" class="view gradient-card-header blue-gradient"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+
+                        <div style="display: block" *ngIf='chartDatasets.length > 0'>
+                            <canvas mdbChart 
+                                [chartType]="chartType"
+                                [datasets]="chartDatasets" 
+                                [labels]="chartLabels"
+                                [colors]="chartColors"
+                                [options]="chartOptions"
+                                [legend]="true"
+                                (chartHover)="chartHovered($event)" 
+                                >
+                            </canvas>
+                        </div>
+                    </div>
+                    
+
+                </div>
+                
+
+            </div>
+            
+
+        </section>
+        
+
+    </div>
+    
+
+</section>
