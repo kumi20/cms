@@ -3,6 +3,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { CKEditorComponent } from 'ng2-ckeditor';
+import { CmsService } from '../cms.service';
 
 const noop = () => {
 };
@@ -27,16 +28,16 @@ export class EdytorComponent implements OnInit, OnDestroy {
   textValue: string = '';
   url;
   configCKE;
-  constructor(sanitizer: DomSanitizer) { 
-    this.url = sanitizer.bypassSecurityTrustResourceUrl('http://kumi20.webd.pl/api/filemanager/dialog.php');
+  constructor(sanitizer: DomSanitizer, private CmsService: CmsService) { 
+    this.url = sanitizer.bypassSecurityTrustResourceUrl(this.CmsService.domaine + 'api/filemanager/dialog.php');
   }
 
   ngOnInit() {
       if (this.heightEditor == null) this.heightEditor = 500;
       this.configCKE = {
         allowedContent: true,
-        filebrowserBrowseUrl : 'http://kumi20.webd.pl/api/filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
-        filebrowserImageBrowseUrl : 'http://kumi20.webd.pl/api/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
+        filebrowserBrowseUrl : this.CmsService.domaine + 'api/filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+        filebrowserImageBrowseUrl : this.CmsService.domaine + 'api/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
         height:this.heightEditor,
         extraPlugins: 'divarea'
         }

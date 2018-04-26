@@ -7,15 +7,16 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class CmsService {
 
-  uri = 'http://kumi20.webd.pl/apitest/cms/'; //api testowe
+  domaine = 'http://kumi20.webd.pl/';    
+  uri = this.domaine + 'api/cms/'; //api testowe
   //uri = 'http://kumi20.webd.pl/api/cms/'; //api produkcyjne  
 
-  uriUploudImageGallery = 'http://kumi20.webd.pl/api/cms/gallery/uploudImages.php';
+  uriUploudImageGallery = this.domaine + 'api/cms/gallery/uploudImages.php';
 
-  uriGallery = 'http://kumi20.webd.pl/cms/assets/gallery';
+  uriGallery = this.domaine + 'cms/assets/gallery';
 
-  uriNewsImage = 'http://kumi20.webd.pl/api/plik.php';
-  sourceImageNews = 'http://kumi20.webd.pl/source/';
+  uriNewsImage = this.domaine + 'api/plik.php';
+  sourceImageNews = this.domaine + 'source/';
     
   month: Array<any> = [
       {value:'01', label: 'styczeń'},

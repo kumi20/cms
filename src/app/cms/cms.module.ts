@@ -67,6 +67,8 @@ import { ConfigComponent } from './config/config.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { AddNewsletterComponent } from './add-newsletter/add-newsletter.component';
 import { KpirStatisticComponent } from './kpir-statistic/kpir-statistic.component';
+import { CustomersComponent } from './customers/customers.component';
+import { AddCustomersComponent } from './add-customers/add-customers.component';
 
 @NgModule({
   imports: [
@@ -135,7 +137,9 @@ import { KpirStatisticComponent } from './kpir-statistic/kpir-statistic.componen
     ConfigComponent,
     NewsletterComponent,
     AddNewsletterComponent,
-    KpirStatisticComponent
+    KpirStatisticComponent,
+    CustomersComponent,
+    AddCustomersComponent
   ],
   providers: [CmsService, AuthGuard, EventService],
   schemas: [ NO_ERRORS_SCHEMA ]

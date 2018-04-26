@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="container">
+     <div class="row card card-cascade narrower">
+            <div  class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+                
+                <a class="white-text mx-3" href="">Klienci</a>
+                <div>
+                    <button class="btn btn-outline-white btn-rounded btn-sm px-2" type="button"  routerLink="/customer"><i class="fa fa-plus"></i> Dodaj nowego klienta</button>
+                </div>
+            </div>
+             
+            <br>
+            <div class="col-lg-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:10%">#</th>
+                            <th >Nazwa</th>
+                            <th>Miejscowość</th>
+                            <th>Ulica</th>
+                            <th>NIP</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let i of customers; let in=index" >
+                            <td style="width:10%" routerLink="/customer/{{i.customer_id}}">{{in+1}}</td>
+                            <td routerLink="/customer/{{i.customer_id}}">{{i.customer_name}}</td>
+                            <td routerLink="/customer/{{i.customer_id}}">{{i.customer_post_code}} {{i.customer_city}}</td>
+                            <td routerLink="/customer/{{i.customer_id}}">{{i.customer_street}}</td>
+                            <td routerLink="/customer/{{i.customer_id}}">{{i.customer_nip}}</td>
+                            <td>
+                                <i class="fa fa-trash-o" aria-hidden="true" style="cursor:pointer; color:red" data-toggle="modal" data-target="#centralModalDanger" (click)="delete(i.customer_id)"></i>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
