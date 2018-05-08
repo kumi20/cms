@@ -8,8 +8,8 @@ import 'rxjs/add/operator/toPromise';
 export class CmsService {
 
   domaine = 'http://kumi20.webd.pl/';    
-  uri = this.domaine + 'api/cms/'; //api testowe
-  //uri = 'http://kumi20.webd.pl/api/cms/'; //api produkcyjne  
+  uri = this.domaine + 'apitest/cms/'; //api testowe
+  //uri = this.domaine + 'api/cms/''; //api produkcyjne  
 
   uriUploudImageGallery = this.domaine + 'api/cms/gallery/uploudImages.php';
 
