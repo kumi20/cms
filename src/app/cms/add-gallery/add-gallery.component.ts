@@ -86,7 +86,7 @@ export class AddGalleryComponent implements OnInit {
     //zdarzenie wywoluje sie po zakończeniu uploudu pliku
     this.uploader.onCompleteAll = () => {
         
-        this.event.wyswietlInfo('success', 'Dodano zdjęcie newsa');
+        this.event.wyswietlInfo('success', 'Dodano zdjęcia');
         this._route.navigateByUrl('/content-6');
     };
 
