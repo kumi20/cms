@@ -24,6 +24,7 @@
     $news_content = $data->news_content;
     $idNewsa = $data->idNewsa;
     $grupa = $data->grupa;
+    $gallery_id = $data->gallery_id;
 
     $today = date("Y-m-d H:i:s");
     if($czyPublikowac && $news_pub_date <= $today) $news_status = 3;
@@ -37,12 +38,12 @@
             `news_lead_img`, `gallery_id`, `news_newsletter_daily`, `news_newsletter_weekly`, `insu`, 
             `insd`, `lupdu`, `lupdd`) 
             VALUES ('$news_name','$news_content','$news_pub_date','$news_status','0',
-            '$news_lead','$news_lead_img','0','0','0','$idUser','$today',null,null)";
+            '$news_lead','$news_lead_img','$gallery_id','0','0','$idUser','$today',null,null)";
     }
     else{
         $q = "UPDATE `cms_news` SET `news_name`='$news_name',`news_content`='$news_content',
         `news_pub_date`='$news_pub_date',`news_status`='$news_status',`news_lead`='$news_lead',
-        `news_lead_img`='$news_lead_img', `lupdu`='$idUser',`lupdd`='$today' WHERE `news_id`='$idNewsa'";
+        `news_lead_img`='$news_lead_img', `gallery_id` = '$gallery_id', `lupdu`='$idUser',`lupdd`='$today' WHERE `news_id`='$idNewsa'";
     }
     
     $r = mysqli_query($abc, $q);   

@@ -58,7 +58,7 @@ export class AddCustomersComponent implements OnInit {
             let fvName = item.file.name;
             let name = new Date().getTime() + Math.round(Math.random() * 10000000);
             item.file.name = name+'.pdf';
-            item.url = `${this.CmsService.domaine}apitest/cms/customers/postFV.php?idUser=${this.id}&name=${fvName}&year=${(<any>item.file).year}&mounth=${(<any>item.file).month}`;
+            item.url = `${this.CmsService.domaine}api/cms/customers/postFV.php?idUser=${this.id}&name=${fvName}&year=${(<any>item.file).year}&mounth=${(<any>item.file).month}`;
             item.upload();
         }
     }

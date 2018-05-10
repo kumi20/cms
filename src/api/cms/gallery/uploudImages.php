@@ -125,7 +125,11 @@ if ($_FILES["file"]["error"] == UPLOAD_ERR_OK) {
     $q = "UPDATE `cms_gallery` SET `gallery_photo_id`='$idPhotoDesc', `gallery_name`='$nameGallery',`gallery_desc`='$descriptionGallery' WHERE `gallery_id` ='$idKatalogu'";
     $r = mysqli_query($abc, $q);
     
-    echo  $nameGallery;
+    $arr = array(
+            'idGallery'=>$idKatalogu,
+        );
+        
+    echo $json_response = json_encode($arr); 
     
     
 }

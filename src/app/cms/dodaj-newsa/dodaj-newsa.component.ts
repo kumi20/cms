@@ -6,6 +6,8 @@ import { CmsService } from '../..//cms.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../../event.service';
 
+const URL2 = 'http://kumi20.webd.pl/api/cms/gallery/uploudImages.php';
+
 const URL = 'http://kumi20.webd.pl/api/plik.php';
 
 @Component({
@@ -45,6 +47,9 @@ export class DodajNewsaComponent implements OnInit {
 };
 
 public uploader:FileUploader = new FileUploader({url: URL});
+    
+public uploaderGalery:FileUploader = new FileUploader({url: URL2});
+    
 public hasBaseDropZoneOver:boolean = false;
 public hasAnotherDropZoneOver:boolean = false;
 
@@ -65,6 +70,9 @@ news_lead: string = '';
 news_content: string = '';
 news_name: string = '';
 grupaNewsow;
+idGaleryNews: number = 0;
+    
+imagesBasic = new Array();    
 
   constructor(private CmsService: CmsService, private route: ActivatedRoute, private _route: Router, private event: EventService) { }
 
@@ -88,6 +96,9 @@ grupaNewsow;
                 this.news_name = response[0].news_name;
                 if (this.news_lead_img.length > 0) document.getElementById('img_lead').innerHTML = "<img src='"+this.news_lead_img+"' style='width:150px'>";
                 this.event.klepsydraStop();
+                this.idGaleryNews = response[0].gallery_id;
+                this.setGaleryNews();
+                
             },
             error => this.event.klepsydraStop()
 
@@ -95,6 +106,8 @@ grupaNewsow;
 
         
     }
+    else this.idNewsa = 0;
+      
     let uri = 'news/newsGroup.php';
     this.CmsService.get(uri).subscribe(
         response => {
@@ -116,6 +129,7 @@ grupaNewsow;
         }
     )
     this.configFileUploud();
+    this.configFileUploudGalery();
   }
 
   public configFileUploud(){
@@ -169,7 +183,8 @@ zapisz(){
             'news_lead':  this.news_lead,
             'news_content': this.news_content,
             'idNewsa': this.idNewsa,
-            'grupa': this.grupaNewsow 
+            'grupa': this.grupaNewsow,
+            'gallery_id': this.idGaleryNews
         })
 
 
@@ -188,5 +203,65 @@ formatujDate(liczba){
    return liczba=(liczba < 10)? "0"+liczba : liczba;
     
    }
+    
+    
+    public configFileUploudGalery(){
+        this.uploaderGalery = new FileUploader({
+            url: URL2,
+            authTokenHeader: 'Authorization',
+            autoUpload: false,
+            allowedMimeType: ['image/jpeg', 'image/png'],
+        });
 
+        this.uploaderGalery.onAfterAddingFile  = (item) => {
+            item.withCredentials = false;   
+        }
+
+    
+    
+
+        //zdarzenie wywoluje sie po zakończeniu uploudu pliku
+        this.uploaderGalery.onCompleteAll = () => {
+            this.event.wyswietlInfo('success', 'Dodano zdjęcia');
+            this.setGaleryNews();
+        };
+        
+         this.uploaderGalery.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+                response = JSON.parse(response);
+                this.idGaleryNews = response.idGallery;
+         }
+
+    }
+    
+    uploadGal(){
+        for (let item of this.uploaderGalery.queue){     
+                item.url = `${this.CmsService.uriUploudImageGallery}?idKatalog=${this.idGaleryNews}&description=${(<any>item.file).description}&nameGallery=${this.news_name}&descriptionGallery=${this.news_name}`;
+                item.upload();
+        }
+    }
+    
+    
+
+    setGaleryNews(){
+        this.CmsService.get(`gallery/galleryId_Get.php?idGallery=${this.idGaleryNews}`).subscribe(
+                  response => {
+
+                    for(let i = 0; i < response.length; i++){
+                      this.imagesBasic.push({
+                        'img': this.CmsService.uriGallery+`/${this.idGaleryNews}/`+response[i].gallery_photo_name,
+                        'thumb': this.CmsService.uriGallery+`/${this.idGaleryNews}/thumb/`+response[i].gallery_photo_name,
+                        'description': response[i].description,
+                        'idPhoto': response[i].gallery_photo_id  
+                      })
+
+
+                    }
+                    this.event.klepsydraStop();
+                  },
+                  error =>{
+                    this.event.wyswietlInfo('error','Błąd pobierania galerii');
+                    this.event.klepsydraStop();
+                  }
+                )
+    }
 }

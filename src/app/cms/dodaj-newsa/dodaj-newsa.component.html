@@ -52,6 +52,68 @@
             <app-edytor [(ngModel)]="news_content"></app-edytor>
         </div>
     </div>
+    
+    <div class="row">
+        <div class="container">
+               <mdb-image-modal [modalImages]="imagesBasic" type="margin"></mdb-image-modal>
+        </div>        
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <label>Galeria</label>
+               <div class="row">
+        <div class="col-lg-12">
+            <label class="my-drop-zone little" for="uploader-input2" ng2FileDrop [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}" (fileOver)="fileOverAnother($event)" [uploader]="uploaderGalery">
+                Przeciągnij i upuść plik na to pole<br/>
+                lub kliknij w nie, żeby wybrać pliki z dysku
+            </label>
+            <input type="file" ng2FileSelect [uploader]="uploaderGalery" id="uploader-input2" style="display:none" multiple/>
+        </div>
+            <div class="container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th width="20%">Nazwa</th>
+                        <th width="20%">Opis</th>
+                        <th>Rozmiar</th>
+                        <th>Progress</th>
+                        <th>Akcja</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of uploaderGalery.queue">
+                        <td><strong>{{ item?.file?.name }}</strong></td>
+                        <td><input type="text" class="form-control" [(ngModel)]="item.file.description"></td>
+                        <td  nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                        <td >
+                            <div class="progress" style="margin-bottom: 0;">
+                                <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                            </div>
+                        </td>
+                        <td nowrap>
+                            <button type="button" class="btn btn-danger btn-xs"
+                                    (click)="item.remove()">
+                                <span class="glyphicon glyphicon-trash"></span> Usuń
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div>
+                    <div>
+                        <div class="progress" style="">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-outline-primary waves-effect" (click)="uploadGal()">Dodaj zdjęcia</button>
+            </div>
+          </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-12">
             <label>Grupa:</label>
