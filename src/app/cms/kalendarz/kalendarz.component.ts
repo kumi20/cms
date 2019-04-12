@@ -3,7 +3,7 @@ import { CmsService } from '../../cms.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../../event.service';
 import { CalendarComponent } from 'ng-fullcalendar';
-import { Options } from 'fullcalendar';
+//import { Options } from 'fullcalendar';
 import { IMyDpOptions } from 'mydatepicker'; 
 import { kalendarz } from './kalendarz';
 
@@ -17,7 +17,7 @@ export class KalendarzComponent implements OnInit {
   @ViewChild('basicModal') basicModal;
   @ViewChild('fullcalendar') fullcalendar;
     
-  calendarOptions: Options;
+  calendarOptions;
   events;
   dataEvent;
   timeStartEvent: string = '00:00';

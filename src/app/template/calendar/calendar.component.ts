@@ -3,7 +3,7 @@ import { CmsService } from '../../cms.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../../event.service';
 import { CalendarComponent } from 'ng-fullcalendar';
-import { Options } from 'fullcalendar';
+//import { Options } from 'fullcalendar';
 
 @Component({
   selector: 'app-calendar',
@@ -17,7 +17,7 @@ export class CalendarTemplateComponent implements OnInit {
   pageElement;
   events;    
  
-  calendarOptions: Options;    
+  calendarOptions;    
     
   constructor(private CmsService: CmsService, private route: ActivatedRoute, private _route: Router, private event: EventService) { }
 

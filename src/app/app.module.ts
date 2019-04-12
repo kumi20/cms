@@ -31,6 +31,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DynamicPagesComponent } from './dynamic-pages/dynamic-pages.component';
 import { WrapperPagesComponent } from './wrapper-pages/wrapper-pages.component';
 
+import * as $ from 'jquery';
+
 
 
 @NgModule({
