@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class CmsService {
 
-  domaine = 'http://kumi20.webd.pl/';    
+  domaine = 'qumi-soft.pl/';    
   //uri = this.domaine + 'apitest/cms/'; //api testowe
   uri = this.domaine + 'api/cms/'; //api produkcyjne  
 
